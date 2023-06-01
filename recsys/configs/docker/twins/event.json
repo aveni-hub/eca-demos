@@ -1,0 +1,56 @@
+{
+    "twin": {
+        "db_config": {
+            "table": "recsys_event",
+            "uri": "postgres://postgres:postgrespw@postgres:5432"
+        },
+        "vse_config": {
+            "hnsw_config": {
+                "full_scan_threshold": 10000,
+                "max_indexing_threads": 0,
+                "m": 16,
+                "ef_construct": 100
+            },
+            "wal_config": {
+                "wal_capacity_mb": 32,
+                "wal_segments_ahead": 0
+            },
+            "optimizer_config": {
+                "deleted_threshold": 0.2,
+                "vacuum_min_vector_number": 1000,
+                "default_segment_number": 0,
+                "max_segment_size": null,
+                "memmap_threshold": null,
+                "indexing_threshold": 2000,
+                "flush_interval_sec": 5,
+                "max_optimization_threads": 1
+            },
+            "shard_number": null,
+            "timeout": 10,
+            "vse_url": "qdrant://qdrant:6334",
+            "similarity_metric": "euclid",
+            "on_disk_payload": null
+        },
+        "log_config": {
+            "level": "info",
+            "log_file": "/tmp/event.log"
+        },
+        "physical_twin_type": "sensor",
+        "shape": 1536,
+        "display_name": "Event",
+        "module_id": "recsys_event",
+        "duration_threshold": "1s",
+        "sync_rate": "1s",
+        "sync_once": false,
+        "broker_config": {
+            "url": "kafka:9093",
+            "sub_topic": "event_sub",
+            "pub_topic": "",
+            "group": "recsys_sensors",
+            "auto_offset_reset": "latest"
+        },
+        "ras_config": null,
+        "in_twins": [],
+        "out_twins": []
+    }
+}
