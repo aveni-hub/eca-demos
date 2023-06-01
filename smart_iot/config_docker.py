@@ -425,8 +425,8 @@ if __name__ == '__main__':
     ac_twin_ras = EmotifiedInstancesConfig(
         emotified_instances=ac_twin_ras
     )
-    ac_twin_ras.to_json_file("/Users/ogbanugot/Workspace/eca_demos/smart_iot/configs/docker/ras/ac_ras.json")
-    ac_twin_config.to_json_file("/Users/ogbanugot/Workspace/eca_demos/smart_iot/configs/docker/twins/ac.json")
+    ac_twin_ras.to_json_file("configs/docker/ras/ac_ras.json")
+    ac_twin_config.to_json_file("configs/docker/twins/ac.json")
 
     aqi_twin_config = TwinConfig(
         twin=aqi_twin_config
@@ -434,8 +434,8 @@ if __name__ == '__main__':
     aqi_twin_ras = EmotifiedInstancesConfig(
         emotified_instances=aqi_twin_ras
     )
-    aqi_twin_ras.to_json_file("/Users/ogbanugot/Workspace/eca_demos/smart_iot/configs/docker/ras/aqi_ras.json")
-    aqi_twin_config.to_json_file("/Users/ogbanugot/Workspace/eca_demos/smart_iot/configs/docker/twins/aqi.json")
+    aqi_twin_ras.to_json_file("configs/docker/ras/aqi_ras.json")
+    aqi_twin_config.to_json_file("configs/docker/twins/aqi.json")
 
     occupancy_twin_config = TwinConfig(
         twin=occupancy_twin_config
@@ -443,8 +443,8 @@ if __name__ == '__main__':
     occupancy_twin_ras = EmotifiedInstancesConfig(
         emotified_instances=occupancy_twin_ras
     )
-    occupancy_twin_ras.to_json_file("/Users/ogbanugot/Workspace/eca_demos/smart_iot/configs/docker/ras/occupancy_ras.json")
-    occupancy_twin_config.to_json_file("/Users/ogbanugot/Workspace/eca_demos/smart_iot/configs/docker/twins/occupancy.json")
+    occupancy_twin_ras.to_json_file("configs/docker/ras/occupancy_ras.json")
+    occupancy_twin_config.to_json_file("configs/docker/twins/occupancy.json")
 
     purifier_twin_config = TwinConfig(
         twin=purifier_twin_config
@@ -452,8 +452,8 @@ if __name__ == '__main__':
     purifier_twin_ras = EmotifiedInstancesConfig(
         emotified_instances=purifier_twin_ras
     )
-    purifier_twin_ras.to_json_file("/Users/ogbanugot/Workspace/eca_demos/smart_iot/configs/docker/ras/purifier_ras.json")
-    purifier_twin_config.to_json_file("/Users/ogbanugot/Workspace/eca_demos/smart_iot/configs/docker/twins/purifier.json")
+    purifier_twin_ras.to_json_file("configs/docker/ras/purifier_ras.json")
+    purifier_twin_config.to_json_file("configs/docker/twins/purifier.json")
 
     temperature_twin_config = TwinConfig(
         twin=temperature_twin_config
@@ -462,33 +462,33 @@ if __name__ == '__main__':
         emotified_instances=temperature_twin_ras
     )
     temperature_twin_ras.to_json_file(
-        "/Users/ogbanugot/Workspace/eca_demos/smart_iot/configs/docker/ras/temperature_ras.json"
+        "configs/docker/ras/temperature_ras.json"
     )
     temperature_twin_config.to_json_file(
-        "/Users/ogbanugot/Workspace/eca_demos/smart_iot/configs/docker/twins/temperature.json"
+        "configs/docker/twins/temperature.json"
     )
 
     aggregate_config = TwinConfig(
         twin=aggregate_config
     )
-    aggregate_config.to_json_file("/Users/ogbanugot/Workspace/eca_demos/smart_iot/configs/docker/aggregate.json")
+    aggregate_config.to_json_file("configs/docker/aggregate.json")
     core_pp_config = CortexConfig(
         cortex=core_pp
     )
-    core_pp_config.to_json_file("/Users/ogbanugot/Workspace/eca_demos/smart_iot/configs/docker/core_pp.json")
+    core_pp_config.to_json_file("configs/docker/core_pp.json")
     core_us_config = CortexConfig(
         cortex=core_us
     )
-    core_us_config.to_json_file("/Users/ogbanugot/Workspace/eca_demos/smart_iot/configs/docker/core_us.json")
+    core_us_config.to_json_file("configs/docker/core_us.json")
     core_respond_config = CortexConfig(
         cortex=core_respond
     )
-    core_respond_config.to_json_file("/Users/ogbanugot/Workspace/eca_demos/smart_iot/configs/docker/core_res.json")
+    core_respond_config.to_json_file("configs/docker/core_res.json")
     document_config = DocumentConfig(
         document=document_config
     )
-    document_config.to_json_file("/Users/ogbanugot/Workspace/eca_demos/smart_iot/configs/docker/document.json")
+    document_config.to_json_file("configs/docker/document.json")
     server_config = ServerConfig(
         server=server_config
     )
-    server_config.to_json_file("/Users/ogbanugot/Workspace/eca_demos/smart_iot/configs/docker/server.json")
+    server_config.to_json_file("configs/docker/server.json")
