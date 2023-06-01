@@ -1,0 +1,81 @@
+version: "3"
+
+services:
+  core_pp:
+    image: ogbanugot/avenieca:0.3.0
+    command: core-pp --config "/avenieca/core_pp.json"
+    volumes:
+      - "core_pp:/avenieca/storage"
+      - "./configs/docker/gwp_corepp.json:/avenieca/core_pp.json"
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+
+  core_us:
+    image: ogbanugot/avenieca:0.3.0
+    command: core-us --config "/avenieca/core_us.json"
+    volumes:
+      - "core_us:/avenieca/storage"
+      - "./configs/docker/gwp_core_us.json:/avenieca/core_us.json"
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+
+  document:
+    image: ogbanugot/avenieca:0.3.0
+    command: document create --config "/avenieca/document.json"
+    volumes:
+      - "document:/avenieca/storage"
+      - "./configs/docker/gwp_docs.json:/avenieca/document.json"
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+
+  server:
+    image: ogbanugot/avenieca-server:0.3.0
+    command: --config "/avenieca/server.json"
+    volumes:
+      - "server:/avenieca/storage"
+      - "./configs/docker/gwp_server.json:/avenieca/server.json"
+    ports:
+      - "2580:2580"
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+
+volumes:
+#  aggregate:
+#    driver: local
+  core_us:
+    driver: local
+  core_pp:
+    driver: local
+#  core_res:
+#    driver: local
+  document:
+    driver: local
+  server:
+    driver: local
+
+networks:
+  ECACluster:

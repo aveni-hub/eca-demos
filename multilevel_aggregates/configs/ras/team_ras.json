@@ -1,0 +1,13 @@
+{
+    "emotified_instances": {
+        "esi_vec": [
+            {
+                "id": 1,
+                "state_vec": [
+                    11
+                ],
+                "valence": 90.0
+            }
+        ]
+    }
+}
