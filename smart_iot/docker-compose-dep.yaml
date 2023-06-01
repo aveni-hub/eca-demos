@@ -1,0 +1,121 @@
+version: "3"
+
+services:
+  aggregate:
+    image: ogbanugot/avenieca:0.3.0
+    command: aggregate --config "/avenieca/aggregate.json"
+    volumes:
+      - "aggregate:/avenieca/storage"
+      - "./configs/docker/aggregate.json:/avenieca/aggregate.json"
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+
+  core_us:
+    image: ogbanugot/avenieca:0.3.0
+    command: core-us --config "/avenieca/core_us.json"
+    volumes:
+      - "core_us:/avenieca/storage"
+      - "./configs/docker/core_us.json:/avenieca/core_us.json"
+    depends_on:
+      - aggregate
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+
+  core_pp:
+    image: ogbanugot/avenieca:0.3.0
+    command: core-pp --config "/avenieca/core_pp.json"
+    volumes:
+      - "core_pp:/avenieca/storage"
+      - "./configs/docker/core_pp.json:/avenieca/core_pp.json"
+    depends_on:
+      - aggregate
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+
+  core_res:
+    image: ogbanugot/avenieca:0.3.0
+    command: core-respond --config "/avenieca/core_res.json"
+    volumes:
+      - "core_res:/avenieca/storage"
+      - "./configs/docker/core_res.json:/avenieca/core_res.json"
+    depends_on:
+      - core_pp
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+
+  document:
+    image: ogbanugot/avenieca:0.3.0
+    command: document create --config "/avenieca/document.json"
+    volumes:
+      - "document:/avenieca/storage"
+      - "./configs/docker/document.json:/avenieca/document.json"
+    depends_on:
+      - core_pp
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+
+  server:
+    image: ogbanugot/avenieca-server:0.3.0
+    command: --config "/avenieca/server.json"
+    volumes:
+      - "server:/avenieca/storage"
+      - "./configs/docker/server.json:/avenieca/server.json"
+    depends_on:
+      - aggregate
+    ports:
+      - "2580:2580"
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+
+volumes:
+  aggregate:
+    driver: local
+  core_us:
+    driver: local
+  core_pp:
+    driver: local
+  core_res:
+    driver: local
+  document:
+    driver: local
+  server:
+    driver: local
+
+networks:
+  ECACluster:

@@ -1,0 +1,307 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:latest
+    command: -c 'max_connections=200'
+    environment:
+      - POSTGRES_PASSWORD=postgrespw
+    ports:
+      - "5432:5432"
+    volumes:
+      - data:/var/lib/postgresql
+    networks:
+      - ECACluster
+
+  kafka:
+    image: docker.io/bitnami/kafka:latest
+    ports:
+      - "9092:9092"
+    expose:
+      - "9093"
+    volumes:
+      - "kafka_data:/bitnami"
+    environment:
+      - BITNAMI_DEBUG=yes
+      - KAFKA_CFG_NODE_ID=1
+      - KAFKA_ENABLE_KRAFT=yes
+      - KAFKA_CFG_PROCESS_ROLES=broker,controller
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=1@127.0.0.1:9094
+      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+      - KAFKA_CFG_LISTENERS=CONTROLLER://:9094,INSIDE://:9093,OUTSIDE://:9092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=INSIDE://kafka:9093,OUTSIDE://192.168.0.193:9092
+      - KAFKA_INTER_BROKER_LISTENER_NAME=INSIDE
+      - KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE=true
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    networks:
+      - ECACluster
+
+  qdrant:
+    image: qdrant/qdrant
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - "qdrant_data:/qdrant/storage"
+      - "./qdrant_config.yaml:/qdrant/config/production.yaml"
+    networks:
+      - ECACluster
+
+  ac:
+    image: ogbanugot/avenieca:0.3.0
+    command: twin --config "/avenieca/ac.json"
+    volumes:
+      - "ac:/avenieca/storage"
+      - "./configs/docker/twins/ac.json:/avenieca/ac.json"
+      - "./configs/docker/ras/ac_ras.json:/avenieca/ac_ras.json"
+    depends_on:
+      - postgres
+      - kafka
+      - qdrant
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+  aqi:
+    image: ogbanugot/avenieca:0.3.0
+    command: twin --config "/avenieca/aqi.json"
+    volumes:
+      - "aqi:/avenieca/storage"
+      - "./configs/docker/twins/aqi.json:/avenieca/aqi.json"
+      - "./configs/docker/ras/aqi_ras.json:/avenieca/aqi_ras.json"
+    depends_on:
+      - postgres
+      - kafka
+      - qdrant
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+
+  occupancy:
+    image: ogbanugot/avenieca:0.3.0
+    command: twin --config "/avenieca/occupancy.json"
+    volumes:
+      - "occupancy:/avenieca/storage"
+      - "./configs/docker/twins/occupancy.json:/avenieca/occupancy.json"
+      - "./configs/docker/ras/occupancy_ras.json:/avenieca/occupancy_ras.json"
+    depends_on:
+      - postgres
+      - kafka
+      - qdrant
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+
+  purifier:
+    image: ogbanugot/avenieca:0.3.0
+    command: twin --config "/avenieca/purifier.json"
+    volumes:
+      - "purifier:/avenieca/storage"
+      - "./configs/docker/twins/purifier.json:/avenieca/purifier.json"
+      - "./configs/docker/ras/purifier_ras.json:/avenieca/purifier_ras.json"
+    depends_on:
+      - postgres
+      - kafka
+      - qdrant
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+
+  temperature:
+    image: ogbanugot/avenieca:0.3.0
+    command: twin --config "/avenieca/temperature.json"
+    volumes:
+      - "temperature:/avenieca/storage"
+      - "./configs/docker/twins/temperature.json:/avenieca/temperature.json"
+      - "./configs/docker/ras/temperature_ras.json:/avenieca/temperature_ras.json"
+    depends_on:
+      - postgres
+      - kafka
+      - qdrant
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+
+  aggregate:
+    image: ogbanugot/avenieca:0.3.0
+    command: aggregate --config "/avenieca/aggregate.json"
+    volumes:
+      - "aggregate:/avenieca/storage"
+      - "./configs/docker/aggregate.json:/avenieca/aggregate.json"
+    depends_on:
+      - postgres
+      - kafka
+      - qdrant
+      - ac
+      - aqi
+      - occupancy
+      - temperature
+      - purifier
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+
+  core_us:
+    image: ogbanugot/avenieca:0.3.0
+    command: core-us --config "/avenieca/core_us.json"
+    volumes:
+      - "core_us:/avenieca/storage"
+      - "./configs/docker/core_us.json:/avenieca/core_us.json"
+    depends_on:
+      - postgres
+      - kafka
+      - qdrant
+      - aggregate
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+
+  core_pp:
+    image: ogbanugot/avenieca:0.3.0
+    command: core-pp --config "/avenieca/core_pp.json"
+    volumes:
+      - "core_pp:/avenieca/storage"
+      - "./configs/docker/core_pp.json:/avenieca/core_pp.json"
+    depends_on:
+      - postgres
+      - kafka
+      - qdrant
+      - aggregate
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+
+  core_res:
+    image: ogbanugot/avenieca:0.3.0
+    command: core-respond --config "/avenieca/core_res.json"
+    volumes:
+      - "core_res:/avenieca/storage"
+      - "./configs/docker/core_res.json:/avenieca/core_res.json"
+    depends_on:
+      - postgres
+      - kafka
+      - qdrant
+      - core_pp
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+
+  document:
+    image: ogbanugot/avenieca:0.3.0
+    command: document create --config "/avenieca/document.json"
+    volumes:
+      - "document:/avenieca/storage"
+      - "./configs/docker/document.json:/avenieca/document.json"
+    depends_on:
+      - postgres
+      - kafka
+      - qdrant
+      - core_pp
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+
+  server:
+    image: ogbanugot/avenieca-server:0.3.0
+    command: --config "/avenieca/server.json"
+    volumes:
+      - "server:/avenieca/storage"
+      - "./configs/docker/server.json:/avenieca/server.json"
+    depends_on:
+      - postgres
+      - kafka
+      - qdrant
+      - aggregate
+    ports:
+      - "2580:2580"
+    networks:
+      - ECACluster
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 2s
+        max_attempts: 20
+        window: 120s
+
+volumes:
+  kafka_data:
+    driver: local
+  qdrant_data:
+    driver: local
+  ac:
+    driver: local
+  aqi:
+    driver: local
+  occupancy:
+    driver: local
+  temperature:
+    driver: local
+  purifier:
+    driver: local
+  aggregate:
+    driver: local
+  core_us:
+    driver: local
+  core_pp:
+    driver: local
+  core_res:
+    driver: local
+  document:
+    driver: local
+  server:
+    driver: local
+  data:
+
+networks:
+  ECACluster:
