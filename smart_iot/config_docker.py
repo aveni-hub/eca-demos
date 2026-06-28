@@ -5,6 +5,7 @@ from avenieca.config.cortex import Cortex, CortexConfig
 from avenieca.config.db import DB
 from avenieca.config.document import Document, DocumentConfig
 from avenieca.config.embedding import Embedding
+from avenieca.config.license import License, Offline
 from avenieca.config.log import Log
 from avenieca.config.ras import RAS, EmotifiedInstances, ESI, EmotifiedInstancesConfig
 from avenieca.config.retrieval import Retrieval, OAIConfig
@@ -23,6 +24,7 @@ openai_key = os.getenv("OPENAI_API_KEY")
 username = os.getenv("USERNAME")
 password = os.getenv("PASSWORD")
 api_key = os.getenv("API_KEY")
+license_file = os.getenv("LICENSE_PATH_DOCKER")
 
 ac_twin_config = Twin(
     display_name="Air Conditioner",
@@ -54,6 +56,11 @@ ac_twin_config = Twin(
     ras_config=RAS(
         upsert_from="json",
         file_path="/avenieca/ac_ras.json"
+    ),
+    license_config=License(
+        offline=Offline(
+            license_file=license_file
+        )
     )
 )
 
@@ -97,6 +104,11 @@ aqi_twin_config = Twin(
     ras_config=RAS(
         upsert_from="json",
         file_path="/avenieca/aqi_ras.json"
+    ),
+    license_config=License(
+        offline=Offline(
+            license_file=license_file
+        )
     )
 )
 aqi_twin_ras = EmotifiedInstances(
@@ -143,6 +155,11 @@ purifier_twin_config = Twin(
     ras_config=RAS(
         upsert_from="json",
         file_path="/avenieca/purifier_ras.json"
+    ),
+    license_config=License(
+        offline=Offline(
+            license_file=license_file
+        )
     )
 )
 purifier_twin_ras = EmotifiedInstances(
@@ -189,6 +206,11 @@ occupancy_twin_config = Twin(
     ras_config=RAS(
         upsert_from="json",
         file_path="/avenieca/occupancy_ras.json"
+    ),
+    license_config=License(
+        offline=Offline(
+            license_file=license_file
+        )
     )
 )
 occupancy_twin_ras = EmotifiedInstances(
@@ -235,6 +257,11 @@ temperature_twin_config = Twin(
     ras_config=RAS(
         upsert_from="json",
         file_path="/avenieca/temperature_ras.json"
+    ),
+    license_config=License(
+        offline=Offline(
+            license_file=license_file
+        )
     )
 )
 
@@ -281,6 +308,11 @@ aggregate_config = Twin(
     log_config=Log(
         level="error",
         log_file="/tmp/aggregate001.log"
+    ),
+    license_config=License(
+        offline=Offline(
+            license_file=license_file
+        )
     )
 )
 
@@ -307,6 +339,11 @@ core_pp = Cortex(
     log_config=Log(
         level="error",
         log_file="/tmp/avenieca_corepp.log"
+    ),
+    license_config=License(
+        offline=Offline(
+            license_file=license_file
+        )
     )
 )
 
@@ -333,6 +370,11 @@ core_respond = Cortex(
     log_config=Log(
         level="error",
         log_file="/tmp/avenieca_core_respond.log"
+    ),
+    license_config=License(
+        offline=Offline(
+            license_file=license_file
+        )
     )
 )
 
@@ -359,6 +401,11 @@ core_us = Cortex(
     log_config=Log(
         level="error",
         log_file="/tmp/avenieca_core_us.log"
+    ),
+    license_config=License(
+        offline=Offline(
+            license_file=license_file
+        )
     )
 )
 
@@ -388,6 +435,11 @@ document_config = Document(
         api_key=openai_key,
         model="text-embedding-ada-002",
         embedding_size=1536
+    ),
+    license_config=License(
+        offline=Offline(
+            license_file=license_file
+        )
     )
 )
 
@@ -415,6 +467,11 @@ server_config = WebAPI(
             model="gpt-3.5-turbo"
         ),
         document_config=document_config
+    ),
+    license_config=License(
+        offline=Offline(
+            license_file=license_file
+        )
     )
 )
 

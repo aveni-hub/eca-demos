@@ -2,7 +2,7 @@ version: "3"
 
 services:
   core_pp:
-    image: ogbanugot/avenieca:0.3.0
+    image: avenieca/eca:0.4.0
     command: core-pp --config "/avenieca/core_pp.json"
     volumes:
       - "core_pp:/avenieca/storage"
@@ -17,7 +17,7 @@ services:
         window: 120s
 
   core_us:
-    image: ogbanugot/avenieca:0.3.0
+    image: avenieca/eca:0.4.0
     command: core-us --config "/avenieca/core_us.json"
     volumes:
       - "core_us:/avenieca/storage"
@@ -32,7 +32,7 @@ services:
         window: 120s
 
   document:
-    image: ogbanugot/avenieca:0.3.0
+    image: avenieca/eca:0.4.0
     command: document create --config "/avenieca/document.json"
     volumes:
       - "document:/avenieca/storage"
@@ -47,7 +47,7 @@ services:
         window: 120s
 
   server:
-    image: ogbanugot/avenieca-server:0.3.0
+    image: avenieca/server:0.4.0
     command: --config "/avenieca/server.json"
     volumes:
       - "server:/avenieca/storage"
@@ -64,14 +64,10 @@ services:
         window: 120s
 
 volumes:
-#  aggregate:
-#    driver: local
   core_us:
     driver: local
   core_pp:
     driver: local
-#  core_res:
-#    driver: local
   document:
     driver: local
   server:

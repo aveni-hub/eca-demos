@@ -1,0 +1,72 @@
+{
+  "name": "operator binding abstractions curated lane",
+  "shape": [3, 3],
+  "seed": {
+    "definition_ess": [
+      {
+        "key": "a_start",
+        "state": [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+        "valence": 0.4,
+        "score": 6
+      },
+      {
+        "key": "b_after_rotate_180",
+        "state": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0],
+        "valence": 0.6,
+        "score": 7
+      },
+      {
+        "key": "c_after_translate_right_1",
+        "state": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0],
+        "valence": 0.8,
+        "score": 8
+      }
+    ],
+    "abstractions": [
+      {
+        "key": "op_rotate_180",
+        "definition_ref": "a_start",
+        "operator": "rotate_180",
+        "score": 12,
+        "valence": 0.6
+      },
+      {
+        "key": "op_translate_right_1",
+        "definition_ref": "b_after_rotate_180",
+        "operator": "translate_right_1",
+        "score": 11,
+        "valence": 0.7
+      },
+      {
+        "key": "prog1",
+        "definition_ref": "a_start",
+        "operator": -1,
+        "pattern_refs": ["op_rotate_180"],
+        "sequence_refs": ["op_rotate_180", "op_translate_right_1"],
+        "score": 30,
+        "valence": 0.9
+      }
+    ],
+    "bindings": [
+      {
+        "abstraction_ref": "op_rotate_180",
+        "ess_ref": "a_start"
+      },
+      {
+        "abstraction_ref": "op_translate_right_1",
+        "ess_ref": "b_after_rotate_180"
+      },
+      {
+        "abstraction_ref": "prog1",
+        "ess_ref": "a_start"
+      }
+    ]
+  },
+  "expect": {
+    "goal_flow": ["root_goal", "subgoal", "operator_stage_0", "operator_stage_1"],
+    "next_attention_states": [
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0],
+      [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0]
+    ]
+  }
+}

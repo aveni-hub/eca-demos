@@ -1,0 +1,351 @@
+{
+    "server": {
+        "user_config": {
+            "username": "default@email.com",
+            "password": "admin",
+            "api_key": "XIsh_JDNCJA",
+            "db_config": {
+                "table": "user_avenieca",
+                "uri": "postgres://postgres:postgrespw@postgres:5432"
+            }
+        },
+        "cortex_config": {
+            "pag": "btc",
+            "sync_rate": "500ms",
+            "duration_threshold": "1s",
+            "twin_configs": [
+                {
+                    "db_config": {
+                        "table": "btc",
+                        "uri": "postgres://postgres:postgrespw@postgres:5432"
+                    },
+                    "vse_config": {
+                        "hnsw_config": {
+                            "full_scan_threshold": 10000,
+                            "max_indexing_threads": 0,
+                            "m": 16,
+                            "ef_construct": 100
+                        },
+                        "wal_config": {
+                            "wal_capacity_mb": 32,
+                            "wal_segments_ahead": 0
+                        },
+                        "optimizer_config": {
+                            "deleted_threshold": 0.2,
+                            "vacuum_min_vector_number": 1000,
+                            "default_segment_number": 0,
+                            "max_segment_size": null,
+                            "memmap_threshold": null,
+                            "indexing_threshold": 2000,
+                            "flush_interval_sec": 5,
+                            "max_optimization_threads": 1
+                        },
+                        "shard_number": null,
+                        "timeout": 10,
+                        "vse_url": "qdrant://qdrant:6334",
+                        "similarity_metric": "euclid",
+                        "on_disk_payload": null
+                    },
+                    "log_config": {
+                        "level": "error",
+                        "log_file": "/tmp/btc.log"
+                    },
+                    "license_config": {
+                        "online": null,
+                        "offline": {
+                            "license_file": "/avenieca/license.lic"
+                        }
+                    },
+                    "physical_twin_type": "actuator",
+                    "shape": 1,
+                    "display_name": "BTC",
+                    "module_id": "btc",
+                    "duration_threshold": "1s",
+                    "sync_rate": "1s",
+                    "sync_once": false,
+                    "broker_config": {
+                        "url": "kafka:9093",
+                        "sub_topic": "btc_sub",
+                        "pub_topic": "btc_pub",
+                        "group": "actuators",
+                        "auto_offset_reset": "latest"
+                    },
+                    "ras_config": null,
+                    "in_twins": [],
+                    "out_twins": []
+                }
+            ],
+            "db_config": {
+                "table": "core",
+                "uri": "postgres://postgres:postgrespw@postgres:5432"
+            },
+            "log_config": {
+                "level": "error",
+                "log_file": "/tmp/cryp_avenieca_corepp.log"
+            },
+            "license_config": {
+                "online": null,
+                "offline": {
+                    "license_file": "/avenieca/license.lic"
+                }
+            },
+            "name": "core",
+            "recall": 20,
+            "range": 20,
+            "sync_once": false
+        },
+        "log_config": {
+            "level": "debug",
+            "log_file": "/tmp/eca_server.log"
+        },
+        "license_config": {
+            "online": null,
+            "offline": {
+                "license_file": "/avenieca/license.lic"
+            }
+        },
+        "host": "0.0.0.0",
+        "port": "2580",
+        "cors_max_age": 3600,
+        "document_config": {
+            "name": "crypto_docs",
+            "sync_rate": "50ms",
+            "create_n_embed": true,
+            "twin_config": {
+                "db_config": {
+                    "table": "btc",
+                    "uri": "postgres://postgres:postgrespw@postgres:5432"
+                },
+                "vse_config": {
+                    "hnsw_config": {
+                        "full_scan_threshold": 10000,
+                        "max_indexing_threads": 0,
+                        "m": 16,
+                        "ef_construct": 100
+                    },
+                    "wal_config": {
+                        "wal_capacity_mb": 32,
+                        "wal_segments_ahead": 0
+                    },
+                    "optimizer_config": {
+                        "deleted_threshold": 0.2,
+                        "vacuum_min_vector_number": 1000,
+                        "default_segment_number": 0,
+                        "max_segment_size": null,
+                        "memmap_threshold": null,
+                        "indexing_threshold": 2000,
+                        "flush_interval_sec": 5,
+                        "max_optimization_threads": 1
+                    },
+                    "shard_number": null,
+                    "timeout": 10,
+                    "vse_url": "qdrant://qdrant:6334",
+                    "similarity_metric": "euclid",
+                    "on_disk_payload": null
+                },
+                "log_config": {
+                    "level": "error",
+                    "log_file": "/tmp/btc.log"
+                },
+                "license_config": {
+                    "online": null,
+                    "offline": {
+                        "license_file": "/avenieca/license.lic"
+                    }
+                },
+                "physical_twin_type": "actuator",
+                "shape": 1,
+                "display_name": "BTC",
+                "module_id": "btc",
+                "duration_threshold": "1s",
+                "sync_rate": "1s",
+                "sync_once": false,
+                "broker_config": {
+                    "url": "kafka:9093",
+                    "sub_topic": "btc_sub",
+                    "pub_topic": "btc_pub",
+                    "group": "actuators",
+                    "auto_offset_reset": "latest"
+                },
+                "ras_config": null,
+                "in_twins": [],
+                "out_twins": []
+            },
+            "db_config": {
+                "table": "crypto_docs",
+                "uri": "postgres://postgres:postgrespw@postgres:5432"
+            },
+            "vse_config": {
+                "hnsw_config": {
+                    "full_scan_threshold": 10000,
+                    "max_indexing_threads": 0,
+                    "m": 16,
+                    "ef_construct": 100
+                },
+                "wal_config": {
+                    "wal_capacity_mb": 32,
+                    "wal_segments_ahead": 0
+                },
+                "optimizer_config": {
+                    "deleted_threshold": 0.2,
+                    "vacuum_min_vector_number": 1000,
+                    "default_segment_number": 0,
+                    "max_segment_size": null,
+                    "memmap_threshold": null,
+                    "indexing_threshold": 2000,
+                    "flush_interval_sec": 5,
+                    "max_optimization_threads": 1
+                },
+                "shard_number": null,
+                "timeout": 10,
+                "vse_url": "qdrant://qdrant:6334",
+                "similarity_metric": "euclid",
+                "on_disk_payload": null
+            },
+            "log_config": {
+                "level": "error",
+                "log_file": "/tmp/cryp_docs.log"
+            },
+            "embedding_config": {
+                "api": "openai",
+                "api_url": "https://api.openai.com/v1/",
+                "api_key": "<OPENAI_API_KEY>",
+                "model": "text-embedding-ada-002",
+                "embedding_size": 1536
+            },
+            "license_config": {
+                "online": null,
+                "offline": {
+                    "license_file": "/avenieca/license.lic"
+                }
+            },
+            "sync_once": false
+        },
+        "retrieval_config": {
+            "api": "openai",
+            "document_config": {
+                "name": "crypto_docs",
+                "sync_rate": "50ms",
+                "create_n_embed": true,
+                "twin_config": {
+                    "db_config": {
+                        "table": "btc",
+                        "uri": "postgres://postgres:postgrespw@postgres:5432"
+                    },
+                    "vse_config": {
+                        "hnsw_config": {
+                            "full_scan_threshold": 10000,
+                            "max_indexing_threads": 0,
+                            "m": 16,
+                            "ef_construct": 100
+                        },
+                        "wal_config": {
+                            "wal_capacity_mb": 32,
+                            "wal_segments_ahead": 0
+                        },
+                        "optimizer_config": {
+                            "deleted_threshold": 0.2,
+                            "vacuum_min_vector_number": 1000,
+                            "default_segment_number": 0,
+                            "max_segment_size": null,
+                            "memmap_threshold": null,
+                            "indexing_threshold": 2000,
+                            "flush_interval_sec": 5,
+                            "max_optimization_threads": 1
+                        },
+                        "shard_number": null,
+                        "timeout": 10,
+                        "vse_url": "qdrant://qdrant:6334",
+                        "similarity_metric": "euclid",
+                        "on_disk_payload": null
+                    },
+                    "log_config": {
+                        "level": "error",
+                        "log_file": "/tmp/btc.log"
+                    },
+                    "license_config": {
+                        "online": null,
+                        "offline": {
+                            "license_file": "/avenieca/license.lic"
+                        }
+                    },
+                    "physical_twin_type": "actuator",
+                    "shape": 1,
+                    "display_name": "BTC",
+                    "module_id": "btc",
+                    "duration_threshold": "1s",
+                    "sync_rate": "1s",
+                    "sync_once": false,
+                    "broker_config": {
+                        "url": "kafka:9093",
+                        "sub_topic": "btc_sub",
+                        "pub_topic": "btc_pub",
+                        "group": "actuators",
+                        "auto_offset_reset": "latest"
+                    },
+                    "ras_config": null,
+                    "in_twins": [],
+                    "out_twins": []
+                },
+                "db_config": {
+                    "table": "crypto_docs",
+                    "uri": "postgres://postgres:postgrespw@postgres:5432"
+                },
+                "vse_config": {
+                    "hnsw_config": {
+                        "full_scan_threshold": 10000,
+                        "max_indexing_threads": 0,
+                        "m": 16,
+                        "ef_construct": 100
+                    },
+                    "wal_config": {
+                        "wal_capacity_mb": 32,
+                        "wal_segments_ahead": 0
+                    },
+                    "optimizer_config": {
+                        "deleted_threshold": 0.2,
+                        "vacuum_min_vector_number": 1000,
+                        "default_segment_number": 0,
+                        "max_segment_size": null,
+                        "memmap_threshold": null,
+                        "indexing_threshold": 2000,
+                        "flush_interval_sec": 5,
+                        "max_optimization_threads": 1
+                    },
+                    "shard_number": null,
+                    "timeout": 10,
+                    "vse_url": "qdrant://qdrant:6334",
+                    "similarity_metric": "euclid",
+                    "on_disk_payload": null
+                },
+                "log_config": {
+                    "level": "error",
+                    "log_file": "/tmp/cryp_docs.log"
+                },
+                "embedding_config": {
+                    "api": "openai",
+                    "api_url": "https://api.openai.com/v1/",
+                    "api_key": "<OPENAI_API_KEY>",
+                    "model": "text-embedding-ada-002",
+                    "embedding_size": 1536
+                },
+                "license_config": {
+                    "online": null,
+                    "offline": {
+                        "license_file": "/avenieca/license.lic"
+                    }
+                },
+                "sync_once": false
+            },
+            "oai_config": {
+                "api_url": "https://api.openai.com/v1/",
+                "api_key": "<OPENAI_API_KEY>",
+                "model": "gpt-3.5-turbo",
+                "max_tokens": 1000,
+                "temperature": 0,
+                "top_p": 0,
+                "n": 2
+            }
+        }
+    }
+}

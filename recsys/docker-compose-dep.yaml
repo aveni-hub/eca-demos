@@ -2,7 +2,7 @@ version: "3"
 
 services:
   server:
-    image: ogbanugot/avenieca-server:0.3.0
+    image: avenieca/server:0.4.0
     command: --config "/avenieca/server.json"
     volumes:
       - "server:/avenieca/storage"
@@ -19,16 +19,6 @@ services:
         window: 120s
 
 volumes:
-#  aggregate:
-#    driver: local
-#  core_us:
-#    driver: local
-#  core_pp:
-#    driver: local
-#  core_res:
-#    driver: local
-#  document:
-#    driver: local
   server:
     driver: local
 

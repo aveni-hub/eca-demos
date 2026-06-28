@@ -1,0 +1,260 @@
+{
+  "server": {
+    "host": "0.0.0.0",
+    "port": "2580",
+    "cors_max_age": 3600,
+    "user_config": {
+      "username": "default@email.com",
+      "password": "admin",
+      "db_config": {
+        "table": "user_avenieca",
+        "uri": "postgres://postgres:postgrespw@localhost:5432"
+      }
+    },
+    "cortex_config": {
+      "module_id": "autoabs_aa",
+      "pag": "autoabs_pag",
+      "recall": 16,
+      "valence_threshold": -10.0,
+      "range": 16,
+      "sync_rate": "250ms",
+      "duration_threshold": "1s",
+      "sync_once": false,
+      "twin_configs": [
+        {
+          "db_config": {
+            "table": "autoabs_src",
+            "uri": "postgres://postgres:postgrespw@localhost:5432"
+          },
+          "vse_config": {
+            "client_type": "qdrant",
+            "url": "http://localhost:6334",
+            "qdrant_config": {
+              "vse_url": "http://localhost:6334",
+              "similarity_metric": "euclid",
+              "hnsw_config": {
+                "full_scan_threshold": 10000,
+                "max_indexing_threads": 0,
+                "m": 16,
+                "ef_construct": 100
+              },
+              "wal_config": {
+                "wal_capacity_mb": 32,
+                "wal_segments_ahead": 0
+              },
+              "optimizer_config": {
+                "deleted_threshold": 0.2,
+                "vacuum_min_vector_number": 1000,
+                "default_segment_number": 0,
+                "max_segment_size": null,
+                "memmap_threshold": null,
+                "indexing_threshold": 2000,
+                "flush_interval_sec": 5,
+                "max_optimization_threads": 1
+              },
+              "shard_number": 1,
+              "on_disk_payload": false,
+              "timeout": 10
+            },
+            "pgvector_config": null
+          },
+          "log_config": {
+            "level": "info",
+            "log_file": "/tmp/autoabs_source.log",
+            "sentry": null
+          },
+          "license_config": {
+            "online": null,
+            "offline": {
+              "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+            }
+          },
+          "digital_twin_type": "streamer",
+          "physical_twin_type": "sensor",
+          "shape": [
+            3,
+            3
+          ],
+          "display_name": "Auto Abstraction Source Stream",
+          "module_id": "autoabs_src",
+          "duration_threshold": "1s",
+          "sync_rate": "250ms",
+          "sync_once": false,
+          "broker_config": {
+            "url": "127.0.0.1:9092",
+            "subscribe": "auto_abstraction_source_sub",
+            "publish": ""
+          },
+          "ras_config": null,
+          "in_twins": [],
+          "out_twins": []
+        },
+        {
+          "db_config": {
+            "table": "autoabs_pag",
+            "uri": "postgres://postgres:postgrespw@localhost:5432"
+          },
+          "vse_config": {
+            "client_type": "qdrant",
+            "url": "http://localhost:6334",
+            "qdrant_config": {
+              "vse_url": "http://localhost:6334",
+              "similarity_metric": "euclid",
+              "hnsw_config": {
+                "full_scan_threshold": 10000,
+                "max_indexing_threads": 0,
+                "m": 16,
+                "ef_construct": 100
+              },
+              "wal_config": {
+                "wal_capacity_mb": 32,
+                "wal_segments_ahead": 0
+              },
+              "optimizer_config": {
+                "deleted_threshold": 0.2,
+                "vacuum_min_vector_number": 1000,
+                "default_segment_number": 0,
+                "max_segment_size": null,
+                "memmap_threshold": null,
+                "indexing_threshold": 2000,
+                "flush_interval_sec": 5,
+                "max_optimization_threads": 1
+              },
+              "shard_number": 1,
+              "on_disk_payload": false,
+              "timeout": 10
+            },
+            "pgvector_config": null
+          },
+          "log_config": {
+            "level": "info",
+            "log_file": "/tmp/autoabs_pag.log",
+            "sentry": null
+          },
+          "license_config": {
+            "online": null,
+            "offline": {
+              "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+            }
+          },
+          "digital_twin_type": "reader",
+          "physical_twin_type": "sensor",
+          "shape": [
+            3,
+            3
+          ],
+          "display_name": "Auto Abstraction PAG",
+          "module_id": "autoabs_pag",
+          "duration_threshold": "1s",
+          "sync_rate": "250ms",
+          "sync_once": false,
+          "broker_config": {
+            "url": "127.0.0.1:9092",
+            "subscribe": "autoabs_pag",
+            "publish": ""
+          },
+          "ras_config": null,
+          "in_twins": [
+            {
+              "db_config": {
+                "table": "autoabs_src",
+                "uri": "postgres://postgres:postgrespw@localhost:5432"
+              },
+              "vse_config": {
+                "client_type": "qdrant",
+                "url": "http://localhost:6334",
+                "qdrant_config": {
+                  "vse_url": "http://localhost:6334",
+                  "similarity_metric": "euclid",
+                  "hnsw_config": {
+                    "full_scan_threshold": 10000,
+                    "max_indexing_threads": 0,
+                    "m": 16,
+                    "ef_construct": 100
+                  },
+                  "wal_config": {
+                    "wal_capacity_mb": 32,
+                    "wal_segments_ahead": 0
+                  },
+                  "optimizer_config": {
+                    "deleted_threshold": 0.2,
+                    "vacuum_min_vector_number": 1000,
+                    "default_segment_number": 0,
+                    "max_segment_size": null,
+                    "memmap_threshold": null,
+                    "indexing_threshold": 2000,
+                    "flush_interval_sec": 5,
+                    "max_optimization_threads": 1
+                  },
+                  "shard_number": 1,
+                  "on_disk_payload": false,
+                  "timeout": 10
+                },
+                "pgvector_config": null
+              },
+              "log_config": {
+                "level": "info",
+                "log_file": "/tmp/autoabs_source.log",
+                "sentry": null
+              },
+              "license_config": {
+                "online": null,
+                "offline": {
+                  "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+                }
+              },
+              "digital_twin_type": "streamer",
+              "physical_twin_type": "sensor",
+              "shape": [
+                3,
+                3
+              ],
+              "display_name": "Auto Abstraction Source Stream",
+              "module_id": "autoabs_src",
+              "duration_threshold": "1s",
+              "sync_rate": "250ms",
+              "sync_once": false,
+              "broker_config": {
+                "url": "127.0.0.1:9092",
+                "subscribe": "auto_abstraction_source_sub",
+                "publish": ""
+              },
+              "ras_config": null,
+              "in_twins": [],
+              "out_twins": []
+            }
+          ],
+          "out_twins": []
+        }
+      ],
+      "db_config": {
+        "table": "autoabs_aa",
+        "uri": "postgres://postgres:postgrespw@localhost:5432"
+      },
+      "embedding_config": null,
+      "document_config": null,
+      "log_config": {
+        "level": "info",
+        "log_file": "/tmp/autoabs_core_aa.log",
+        "sentry": null
+      },
+      "license_config": {
+        "online": null,
+        "offline": {
+          "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+        }
+      }
+    },
+    "log_config": {
+      "level": "info",
+      "log_file": "/tmp/auto_abstraction_server.log",
+      "sentry": null
+    },
+    "license_config": {
+      "online": null,
+      "offline": {
+        "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+      }
+    }
+  }
+}

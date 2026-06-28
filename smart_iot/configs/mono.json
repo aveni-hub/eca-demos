@@ -1,0 +1,2674 @@
+{
+  "mono": {
+    "log_config": {
+      "level": "info",
+      "log_file": "/tmp/eca_server.log",
+      "sentry": null
+    },
+    "license_config": {
+      "online": null,
+      "offline": {
+        "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+      }
+    },
+    "twins": [
+      {
+        "db_config": {
+          "table": "ac",
+          "uri": "postgres://postgres:postgrespw@localhost:5432"
+        },
+        "vse_config": {
+          "client_type": "qdrant",
+          "url": "http://localhost:6334",
+          "qdrant_config": {
+            "vse_url": "http://localhost:6334",
+            "similarity_metric": "euclid",
+            "hnsw_config": {
+              "full_scan_threshold": 10000,
+              "max_indexing_threads": 0,
+              "m": 16,
+              "ef_construct": 100
+            },
+            "wal_config": {
+              "wal_capacity_mb": 32,
+              "wal_segments_ahead": 0
+            },
+            "optimizer_config": {
+              "deleted_threshold": 0.2,
+              "vacuum_min_vector_number": 1000,
+              "default_segment_number": 0,
+              "max_segment_size": null,
+              "memmap_threshold": null,
+              "indexing_threshold": 2000,
+              "flush_interval_sec": 5,
+              "max_optimization_threads": 1
+            },
+            "shard_number": 8,
+            "on_disk_payload": false,
+            "timeout": 10
+          },
+          "pgvector_config": null
+        },
+        "log_config": {
+          "level": "info",
+          "log_file": "/tmp/ac.log",
+          "sentry": null
+        },
+        "license_config": {
+          "online": null,
+          "offline": {
+            "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+          }
+        },
+        "digital_twin_type": "streamer",
+        "physical_twin_type": "actuator",
+        "shape": 1,
+        "display_name": "Air Conditioner",
+        "module_id": "air_conditioner",
+        "duration_threshold": "1s",
+        "sync_rate": "1s",
+        "sync_once": false,
+        "broker_config": {
+          "url": "127.0.0.1:9092",
+          "subscribe": "ac_sub",
+          "publish": "ac_pub"
+        },
+        "ras_config": {
+          "upsert_from": "json",
+          "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/ac_ras.json"
+        },
+        "in_twins": [],
+        "out_twins": []
+      },
+      {
+        "db_config": {
+          "table": "aqi",
+          "uri": "postgres://postgres:postgrespw@localhost:5432"
+        },
+        "vse_config": {
+          "client_type": "qdrant",
+          "url": "http://localhost:6334",
+          "qdrant_config": {
+            "vse_url": "http://localhost:6334",
+            "similarity_metric": "euclid",
+            "hnsw_config": {
+              "full_scan_threshold": 10000,
+              "max_indexing_threads": 0,
+              "m": 16,
+              "ef_construct": 100
+            },
+            "wal_config": {
+              "wal_capacity_mb": 32,
+              "wal_segments_ahead": 0
+            },
+            "optimizer_config": {
+              "deleted_threshold": 0.2,
+              "vacuum_min_vector_number": 1000,
+              "default_segment_number": 0,
+              "max_segment_size": null,
+              "memmap_threshold": null,
+              "indexing_threshold": 2000,
+              "flush_interval_sec": 5,
+              "max_optimization_threads": 1
+            },
+            "shard_number": 8,
+            "on_disk_payload": false,
+            "timeout": 10
+          },
+          "pgvector_config": null
+        },
+        "log_config": {
+          "level": "info",
+          "log_file": "/tmp/aqi.log",
+          "sentry": null
+        },
+        "license_config": {
+          "online": null,
+          "offline": {
+            "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+          }
+        },
+        "digital_twin_type": "streamer",
+        "physical_twin_type": "sensor",
+        "shape": 1,
+        "display_name": "Air Quality Index",
+        "module_id": "air_quality_index",
+        "duration_threshold": "1s",
+        "sync_rate": "1s",
+        "sync_once": false,
+        "broker_config": {
+          "url": "127.0.0.1:9092",
+          "subscribe": "aqi_sub",
+          "publish": ""
+        },
+        "ras_config": {
+          "upsert_from": "json",
+          "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/aqi_ras.json"
+        },
+        "in_twins": [],
+        "out_twins": []
+      },
+      {
+        "db_config": {
+          "table": "occupancy",
+          "uri": "postgres://postgres:postgrespw@localhost:5432"
+        },
+        "vse_config": {
+          "client_type": "qdrant",
+          "url": "http://localhost:6334",
+          "qdrant_config": {
+            "vse_url": "http://localhost:6334",
+            "similarity_metric": "euclid",
+            "hnsw_config": {
+              "full_scan_threshold": 10000,
+              "max_indexing_threads": 0,
+              "m": 16,
+              "ef_construct": 100
+            },
+            "wal_config": {
+              "wal_capacity_mb": 32,
+              "wal_segments_ahead": 0
+            },
+            "optimizer_config": {
+              "deleted_threshold": 0.2,
+              "vacuum_min_vector_number": 1000,
+              "default_segment_number": 0,
+              "max_segment_size": null,
+              "memmap_threshold": null,
+              "indexing_threshold": 2000,
+              "flush_interval_sec": 5,
+              "max_optimization_threads": 1
+            },
+            "shard_number": 8,
+            "on_disk_payload": false,
+            "timeout": 10
+          },
+          "pgvector_config": null
+        },
+        "log_config": {
+          "level": "info",
+          "log_file": "/tmp/occupancy.log",
+          "sentry": null
+        },
+        "license_config": {
+          "online": null,
+          "offline": {
+            "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+          }
+        },
+        "digital_twin_type": "streamer",
+        "physical_twin_type": "sensor",
+        "shape": 1,
+        "display_name": "Occupancy",
+        "module_id": "occupancy",
+        "duration_threshold": "1s",
+        "sync_rate": "1s",
+        "sync_once": false,
+        "broker_config": {
+          "url": "127.0.0.1:9092",
+          "subscribe": "occupancy_sub",
+          "publish": ""
+        },
+        "ras_config": {
+          "upsert_from": "json",
+          "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/occupancy_ras.json"
+        },
+        "in_twins": [],
+        "out_twins": []
+      },
+      {
+        "db_config": {
+          "table": "purifier",
+          "uri": "postgres://postgres:postgrespw@localhost:5432"
+        },
+        "vse_config": {
+          "client_type": "qdrant",
+          "url": "http://localhost:6334",
+          "qdrant_config": {
+            "vse_url": "http://localhost:6334",
+            "similarity_metric": "euclid",
+            "hnsw_config": {
+              "full_scan_threshold": 10000,
+              "max_indexing_threads": 0,
+              "m": 16,
+              "ef_construct": 100
+            },
+            "wal_config": {
+              "wal_capacity_mb": 32,
+              "wal_segments_ahead": 0
+            },
+            "optimizer_config": {
+              "deleted_threshold": 0.2,
+              "vacuum_min_vector_number": 1000,
+              "default_segment_number": 0,
+              "max_segment_size": null,
+              "memmap_threshold": null,
+              "indexing_threshold": 2000,
+              "flush_interval_sec": 5,
+              "max_optimization_threads": 1
+            },
+            "shard_number": 8,
+            "on_disk_payload": false,
+            "timeout": 10
+          },
+          "pgvector_config": null
+        },
+        "log_config": {
+          "level": "info",
+          "log_file": "/tmp/purifier.log",
+          "sentry": null
+        },
+        "license_config": {
+          "online": null,
+          "offline": {
+            "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+          }
+        },
+        "digital_twin_type": "streamer",
+        "physical_twin_type": "actuator",
+        "shape": 1,
+        "display_name": "Purifier",
+        "module_id": "purifier",
+        "duration_threshold": "1s",
+        "sync_rate": "1s",
+        "sync_once": false,
+        "broker_config": {
+          "url": "127.0.0.1:9092",
+          "subscribe": "purifier_sub",
+          "publish": "purifier_pub"
+        },
+        "ras_config": {
+          "upsert_from": "json",
+          "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/purifier_ras.json"
+        },
+        "in_twins": [],
+        "out_twins": []
+      },
+      {
+        "db_config": {
+          "table": "temperature",
+          "uri": "postgres://postgres:postgrespw@localhost:5432"
+        },
+        "vse_config": {
+          "client_type": "qdrant",
+          "url": "http://localhost:6334",
+          "qdrant_config": {
+            "vse_url": "http://localhost:6334",
+            "similarity_metric": "euclid",
+            "hnsw_config": {
+              "full_scan_threshold": 10000,
+              "max_indexing_threads": 0,
+              "m": 16,
+              "ef_construct": 100
+            },
+            "wal_config": {
+              "wal_capacity_mb": 32,
+              "wal_segments_ahead": 0
+            },
+            "optimizer_config": {
+              "deleted_threshold": 0.2,
+              "vacuum_min_vector_number": 1000,
+              "default_segment_number": 0,
+              "max_segment_size": null,
+              "memmap_threshold": null,
+              "indexing_threshold": 2000,
+              "flush_interval_sec": 5,
+              "max_optimization_threads": 1
+            },
+            "shard_number": 8,
+            "on_disk_payload": false,
+            "timeout": 10
+          },
+          "pgvector_config": null
+        },
+        "log_config": {
+          "level": "info",
+          "log_file": "/tmp/temperature.log",
+          "sentry": null
+        },
+        "license_config": {
+          "online": null,
+          "offline": {
+            "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+          }
+        },
+        "digital_twin_type": "streamer",
+        "physical_twin_type": "sensor",
+        "shape": 1,
+        "display_name": "Temperature (Celsius)",
+        "module_id": "temperature",
+        "duration_threshold": "1s",
+        "sync_rate": "1s",
+        "sync_once": false,
+        "broker_config": {
+          "url": "127.0.0.1:9092",
+          "subscribe": "temperature_sub",
+          "publish": ""
+        },
+        "ras_config": {
+          "upsert_from": "json",
+          "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/temperature_ras.json"
+        },
+        "in_twins": [],
+        "out_twins": []
+      },
+      {
+        "db_config": {
+          "table": "pag",
+          "uri": "postgres://postgres:postgrespw@localhost:5432"
+        },
+        "vse_config": {
+          "client_type": "qdrant",
+          "url": "http://localhost:6334",
+          "qdrant_config": {
+            "vse_url": "http://localhost:6334",
+            "similarity_metric": "euclid",
+            "hnsw_config": {
+              "full_scan_threshold": 10000,
+              "max_indexing_threads": 0,
+              "m": 16,
+              "ef_construct": 100
+            },
+            "wal_config": {
+              "wal_capacity_mb": 32,
+              "wal_segments_ahead": 0
+            },
+            "optimizer_config": {
+              "deleted_threshold": 0.2,
+              "vacuum_min_vector_number": 1000,
+              "default_segment_number": 0,
+              "max_segment_size": null,
+              "memmap_threshold": null,
+              "indexing_threshold": 2000,
+              "flush_interval_sec": 5,
+              "max_optimization_threads": 1
+            },
+            "shard_number": 8,
+            "on_disk_payload": false,
+            "timeout": 10
+          },
+          "pgvector_config": null
+        },
+        "log_config": {
+          "level": "info",
+          "log_file": "/tmp/aggregate001.log",
+          "sentry": null
+        },
+        "license_config": {
+          "online": null,
+          "offline": {
+            "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+          }
+        },
+        "digital_twin_type": "reader",
+        "physical_twin_type": "",
+        "shape": 4,
+        "display_name": "PAG",
+        "module_id": "aggregate001",
+        "duration_threshold": "40s",
+        "sync_rate": "1s",
+        "sync_once": false,
+        "broker_config": {
+          "url": "127.0.0.1:9092",
+          "subscribe": "aggregate001",
+          "publish": ""
+        },
+        "ras_config": null,
+        "in_twins": [
+          {
+            "db_config": {
+              "table": "ac",
+              "uri": "postgres://postgres:postgrespw@localhost:5432"
+            },
+            "vse_config": {
+              "client_type": "qdrant",
+              "url": "http://localhost:6334",
+              "qdrant_config": {
+                "vse_url": "http://localhost:6334",
+                "similarity_metric": "euclid",
+                "hnsw_config": {
+                  "full_scan_threshold": 10000,
+                  "max_indexing_threads": 0,
+                  "m": 16,
+                  "ef_construct": 100
+                },
+                "wal_config": {
+                  "wal_capacity_mb": 32,
+                  "wal_segments_ahead": 0
+                },
+                "optimizer_config": {
+                  "deleted_threshold": 0.2,
+                  "vacuum_min_vector_number": 1000,
+                  "default_segment_number": 0,
+                  "max_segment_size": null,
+                  "memmap_threshold": null,
+                  "indexing_threshold": 2000,
+                  "flush_interval_sec": 5,
+                  "max_optimization_threads": 1
+                },
+                "shard_number": 8,
+                "on_disk_payload": false,
+                "timeout": 10
+              },
+              "pgvector_config": null
+            },
+            "log_config": {
+              "level": "info",
+              "log_file": "/tmp/ac.log",
+              "sentry": null
+            },
+            "license_config": {
+              "online": null,
+              "offline": {
+                "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+              }
+            },
+            "digital_twin_type": "streamer",
+            "physical_twin_type": "actuator",
+            "shape": 1,
+            "display_name": "Air Conditioner",
+            "module_id": "air_conditioner",
+            "duration_threshold": "1s",
+            "sync_rate": "1s",
+            "sync_once": false,
+            "broker_config": {
+              "url": "127.0.0.1:9092",
+              "subscribe": "ac_sub",
+              "publish": "ac_pub"
+            },
+            "ras_config": {
+              "upsert_from": "json",
+              "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/ac_ras.json"
+            },
+            "in_twins": [],
+            "out_twins": []
+          },
+          {
+            "db_config": {
+              "table": "aqi",
+              "uri": "postgres://postgres:postgrespw@localhost:5432"
+            },
+            "vse_config": {
+              "client_type": "qdrant",
+              "url": "http://localhost:6334",
+              "qdrant_config": {
+                "vse_url": "http://localhost:6334",
+                "similarity_metric": "euclid",
+                "hnsw_config": {
+                  "full_scan_threshold": 10000,
+                  "max_indexing_threads": 0,
+                  "m": 16,
+                  "ef_construct": 100
+                },
+                "wal_config": {
+                  "wal_capacity_mb": 32,
+                  "wal_segments_ahead": 0
+                },
+                "optimizer_config": {
+                  "deleted_threshold": 0.2,
+                  "vacuum_min_vector_number": 1000,
+                  "default_segment_number": 0,
+                  "max_segment_size": null,
+                  "memmap_threshold": null,
+                  "indexing_threshold": 2000,
+                  "flush_interval_sec": 5,
+                  "max_optimization_threads": 1
+                },
+                "shard_number": 8,
+                "on_disk_payload": false,
+                "timeout": 10
+              },
+              "pgvector_config": null
+            },
+            "log_config": {
+              "level": "info",
+              "log_file": "/tmp/aqi.log",
+              "sentry": null
+            },
+            "license_config": {
+              "online": null,
+              "offline": {
+                "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+              }
+            },
+            "digital_twin_type": "streamer",
+            "physical_twin_type": "sensor",
+            "shape": 1,
+            "display_name": "Air Quality Index",
+            "module_id": "air_quality_index",
+            "duration_threshold": "1s",
+            "sync_rate": "1s",
+            "sync_once": false,
+            "broker_config": {
+              "url": "127.0.0.1:9092",
+              "subscribe": "aqi_sub",
+              "publish": ""
+            },
+            "ras_config": {
+              "upsert_from": "json",
+              "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/aqi_ras.json"
+            },
+            "in_twins": [],
+            "out_twins": []
+          },
+          {
+            "db_config": {
+              "table": "purifier",
+              "uri": "postgres://postgres:postgrespw@localhost:5432"
+            },
+            "vse_config": {
+              "client_type": "qdrant",
+              "url": "http://localhost:6334",
+              "qdrant_config": {
+                "vse_url": "http://localhost:6334",
+                "similarity_metric": "euclid",
+                "hnsw_config": {
+                  "full_scan_threshold": 10000,
+                  "max_indexing_threads": 0,
+                  "m": 16,
+                  "ef_construct": 100
+                },
+                "wal_config": {
+                  "wal_capacity_mb": 32,
+                  "wal_segments_ahead": 0
+                },
+                "optimizer_config": {
+                  "deleted_threshold": 0.2,
+                  "vacuum_min_vector_number": 1000,
+                  "default_segment_number": 0,
+                  "max_segment_size": null,
+                  "memmap_threshold": null,
+                  "indexing_threshold": 2000,
+                  "flush_interval_sec": 5,
+                  "max_optimization_threads": 1
+                },
+                "shard_number": 8,
+                "on_disk_payload": false,
+                "timeout": 10
+              },
+              "pgvector_config": null
+            },
+            "log_config": {
+              "level": "info",
+              "log_file": "/tmp/purifier.log",
+              "sentry": null
+            },
+            "license_config": {
+              "online": null,
+              "offline": {
+                "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+              }
+            },
+            "digital_twin_type": "streamer",
+            "physical_twin_type": "actuator",
+            "shape": 1,
+            "display_name": "Purifier",
+            "module_id": "purifier",
+            "duration_threshold": "1s",
+            "sync_rate": "1s",
+            "sync_once": false,
+            "broker_config": {
+              "url": "127.0.0.1:9092",
+              "subscribe": "purifier_sub",
+              "publish": "purifier_pub"
+            },
+            "ras_config": {
+              "upsert_from": "json",
+              "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/purifier_ras.json"
+            },
+            "in_twins": [],
+            "out_twins": []
+          },
+          {
+            "db_config": {
+              "table": "temperature",
+              "uri": "postgres://postgres:postgrespw@localhost:5432"
+            },
+            "vse_config": {
+              "client_type": "qdrant",
+              "url": "http://localhost:6334",
+              "qdrant_config": {
+                "vse_url": "http://localhost:6334",
+                "similarity_metric": "euclid",
+                "hnsw_config": {
+                  "full_scan_threshold": 10000,
+                  "max_indexing_threads": 0,
+                  "m": 16,
+                  "ef_construct": 100
+                },
+                "wal_config": {
+                  "wal_capacity_mb": 32,
+                  "wal_segments_ahead": 0
+                },
+                "optimizer_config": {
+                  "deleted_threshold": 0.2,
+                  "vacuum_min_vector_number": 1000,
+                  "default_segment_number": 0,
+                  "max_segment_size": null,
+                  "memmap_threshold": null,
+                  "indexing_threshold": 2000,
+                  "flush_interval_sec": 5,
+                  "max_optimization_threads": 1
+                },
+                "shard_number": 8,
+                "on_disk_payload": false,
+                "timeout": 10
+              },
+              "pgvector_config": null
+            },
+            "log_config": {
+              "level": "info",
+              "log_file": "/tmp/temperature.log",
+              "sentry": null
+            },
+            "license_config": {
+              "online": null,
+              "offline": {
+                "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+              }
+            },
+            "digital_twin_type": "streamer",
+            "physical_twin_type": "sensor",
+            "shape": 1,
+            "display_name": "Temperature (Celsius)",
+            "module_id": "temperature",
+            "duration_threshold": "1s",
+            "sync_rate": "1s",
+            "sync_once": false,
+            "broker_config": {
+              "url": "127.0.0.1:9092",
+              "subscribe": "temperature_sub",
+              "publish": ""
+            },
+            "ras_config": {
+              "upsert_from": "json",
+              "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/temperature_ras.json"
+            },
+            "in_twins": [],
+            "out_twins": []
+          }
+        ],
+        "out_twins": []
+      }
+    ],
+    "corepp_config": {
+      "pag": "aggregate001",
+      "sync_rate": "500ms",
+      "duration_threshold": "1s",
+      "twin_configs": [
+        {
+          "db_config": {
+            "table": "ac",
+            "uri": "postgres://postgres:postgrespw@localhost:5432"
+          },
+          "vse_config": {
+            "client_type": "qdrant",
+            "url": "http://localhost:6334",
+            "qdrant_config": {
+              "vse_url": "http://localhost:6334",
+              "similarity_metric": "euclid",
+              "hnsw_config": {
+                "full_scan_threshold": 10000,
+                "max_indexing_threads": 0,
+                "m": 16,
+                "ef_construct": 100
+              },
+              "wal_config": {
+                "wal_capacity_mb": 32,
+                "wal_segments_ahead": 0
+              },
+              "optimizer_config": {
+                "deleted_threshold": 0.2,
+                "vacuum_min_vector_number": 1000,
+                "default_segment_number": 0,
+                "max_segment_size": null,
+                "memmap_threshold": null,
+                "indexing_threshold": 2000,
+                "flush_interval_sec": 5,
+                "max_optimization_threads": 1
+              },
+              "shard_number": 8,
+              "on_disk_payload": false,
+              "timeout": 10
+            },
+            "pgvector_config": null
+          },
+          "log_config": {
+            "level": "info",
+            "log_file": "/tmp/ac.log",
+            "sentry": null
+          },
+          "license_config": {
+            "online": null,
+            "offline": {
+              "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+            }
+          },
+          "digital_twin_type": "streamer",
+          "physical_twin_type": "actuator",
+          "shape": 1,
+          "display_name": "Air Conditioner",
+          "module_id": "air_conditioner",
+          "duration_threshold": "1s",
+          "sync_rate": "1s",
+          "sync_once": false,
+          "broker_config": {
+            "url": "127.0.0.1:9092",
+            "subscribe": "ac_sub",
+            "publish": "ac_pub"
+          },
+          "ras_config": {
+            "upsert_from": "json",
+            "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/ac_ras.json"
+          },
+          "in_twins": [],
+          "out_twins": []
+        },
+        {
+          "db_config": {
+            "table": "aqi",
+            "uri": "postgres://postgres:postgrespw@localhost:5432"
+          },
+          "vse_config": {
+            "client_type": "qdrant",
+            "url": "http://localhost:6334",
+            "qdrant_config": {
+              "vse_url": "http://localhost:6334",
+              "similarity_metric": "euclid",
+              "hnsw_config": {
+                "full_scan_threshold": 10000,
+                "max_indexing_threads": 0,
+                "m": 16,
+                "ef_construct": 100
+              },
+              "wal_config": {
+                "wal_capacity_mb": 32,
+                "wal_segments_ahead": 0
+              },
+              "optimizer_config": {
+                "deleted_threshold": 0.2,
+                "vacuum_min_vector_number": 1000,
+                "default_segment_number": 0,
+                "max_segment_size": null,
+                "memmap_threshold": null,
+                "indexing_threshold": 2000,
+                "flush_interval_sec": 5,
+                "max_optimization_threads": 1
+              },
+              "shard_number": 8,
+              "on_disk_payload": false,
+              "timeout": 10
+            },
+            "pgvector_config": null
+          },
+          "log_config": {
+            "level": "info",
+            "log_file": "/tmp/aqi.log",
+            "sentry": null
+          },
+          "license_config": {
+            "online": null,
+            "offline": {
+              "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+            }
+          },
+          "digital_twin_type": "streamer",
+          "physical_twin_type": "sensor",
+          "shape": 1,
+          "display_name": "Air Quality Index",
+          "module_id": "air_quality_index",
+          "duration_threshold": "1s",
+          "sync_rate": "1s",
+          "sync_once": false,
+          "broker_config": {
+            "url": "127.0.0.1:9092",
+            "subscribe": "aqi_sub",
+            "publish": ""
+          },
+          "ras_config": {
+            "upsert_from": "json",
+            "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/aqi_ras.json"
+          },
+          "in_twins": [],
+          "out_twins": []
+        },
+        {
+          "db_config": {
+            "table": "purifier",
+            "uri": "postgres://postgres:postgrespw@localhost:5432"
+          },
+          "vse_config": {
+            "client_type": "qdrant",
+            "url": "http://localhost:6334",
+            "qdrant_config": {
+              "vse_url": "http://localhost:6334",
+              "similarity_metric": "euclid",
+              "hnsw_config": {
+                "full_scan_threshold": 10000,
+                "max_indexing_threads": 0,
+                "m": 16,
+                "ef_construct": 100
+              },
+              "wal_config": {
+                "wal_capacity_mb": 32,
+                "wal_segments_ahead": 0
+              },
+              "optimizer_config": {
+                "deleted_threshold": 0.2,
+                "vacuum_min_vector_number": 1000,
+                "default_segment_number": 0,
+                "max_segment_size": null,
+                "memmap_threshold": null,
+                "indexing_threshold": 2000,
+                "flush_interval_sec": 5,
+                "max_optimization_threads": 1
+              },
+              "shard_number": 8,
+              "on_disk_payload": false,
+              "timeout": 10
+            },
+            "pgvector_config": null
+          },
+          "log_config": {
+            "level": "info",
+            "log_file": "/tmp/purifier.log",
+            "sentry": null
+          },
+          "license_config": {
+            "online": null,
+            "offline": {
+              "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+            }
+          },
+          "digital_twin_type": "streamer",
+          "physical_twin_type": "actuator",
+          "shape": 1,
+          "display_name": "Purifier",
+          "module_id": "purifier",
+          "duration_threshold": "1s",
+          "sync_rate": "1s",
+          "sync_once": false,
+          "broker_config": {
+            "url": "127.0.0.1:9092",
+            "subscribe": "purifier_sub",
+            "publish": "purifier_pub"
+          },
+          "ras_config": {
+            "upsert_from": "json",
+            "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/purifier_ras.json"
+          },
+          "in_twins": [],
+          "out_twins": []
+        },
+        {
+          "db_config": {
+            "table": "temperature",
+            "uri": "postgres://postgres:postgrespw@localhost:5432"
+          },
+          "vse_config": {
+            "client_type": "qdrant",
+            "url": "http://localhost:6334",
+            "qdrant_config": {
+              "vse_url": "http://localhost:6334",
+              "similarity_metric": "euclid",
+              "hnsw_config": {
+                "full_scan_threshold": 10000,
+                "max_indexing_threads": 0,
+                "m": 16,
+                "ef_construct": 100
+              },
+              "wal_config": {
+                "wal_capacity_mb": 32,
+                "wal_segments_ahead": 0
+              },
+              "optimizer_config": {
+                "deleted_threshold": 0.2,
+                "vacuum_min_vector_number": 1000,
+                "default_segment_number": 0,
+                "max_segment_size": null,
+                "memmap_threshold": null,
+                "indexing_threshold": 2000,
+                "flush_interval_sec": 5,
+                "max_optimization_threads": 1
+              },
+              "shard_number": 8,
+              "on_disk_payload": false,
+              "timeout": 10
+            },
+            "pgvector_config": null
+          },
+          "log_config": {
+            "level": "info",
+            "log_file": "/tmp/temperature.log",
+            "sentry": null
+          },
+          "license_config": {
+            "online": null,
+            "offline": {
+              "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+            }
+          },
+          "digital_twin_type": "streamer",
+          "physical_twin_type": "sensor",
+          "shape": 1,
+          "display_name": "Temperature (Celsius)",
+          "module_id": "temperature",
+          "duration_threshold": "1s",
+          "sync_rate": "1s",
+          "sync_once": false,
+          "broker_config": {
+            "url": "127.0.0.1:9092",
+            "subscribe": "temperature_sub",
+            "publish": ""
+          },
+          "ras_config": {
+            "upsert_from": "json",
+            "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/temperature_ras.json"
+          },
+          "in_twins": [],
+          "out_twins": []
+        },
+        {
+          "db_config": {
+            "table": "pag",
+            "uri": "postgres://postgres:postgrespw@localhost:5432"
+          },
+          "vse_config": {
+            "client_type": "qdrant",
+            "url": "http://localhost:6334",
+            "qdrant_config": {
+              "vse_url": "http://localhost:6334",
+              "similarity_metric": "euclid",
+              "hnsw_config": {
+                "full_scan_threshold": 10000,
+                "max_indexing_threads": 0,
+                "m": 16,
+                "ef_construct": 100
+              },
+              "wal_config": {
+                "wal_capacity_mb": 32,
+                "wal_segments_ahead": 0
+              },
+              "optimizer_config": {
+                "deleted_threshold": 0.2,
+                "vacuum_min_vector_number": 1000,
+                "default_segment_number": 0,
+                "max_segment_size": null,
+                "memmap_threshold": null,
+                "indexing_threshold": 2000,
+                "flush_interval_sec": 5,
+                "max_optimization_threads": 1
+              },
+              "shard_number": 8,
+              "on_disk_payload": false,
+              "timeout": 10
+            },
+            "pgvector_config": null
+          },
+          "log_config": {
+            "level": "info",
+            "log_file": "/tmp/aggregate001.log",
+            "sentry": null
+          },
+          "license_config": {
+            "online": null,
+            "offline": {
+              "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+            }
+          },
+          "digital_twin_type": "reader",
+          "physical_twin_type": "",
+          "shape": 4,
+          "display_name": "PAG",
+          "module_id": "aggregate001",
+          "duration_threshold": "40s",
+          "sync_rate": "1s",
+          "sync_once": false,
+          "broker_config": {
+            "url": "127.0.0.1:9092",
+            "subscribe": "aggregate001",
+            "publish": ""
+          },
+          "ras_config": null,
+          "in_twins": [
+            {
+              "db_config": {
+                "table": "ac",
+                "uri": "postgres://postgres:postgrespw@localhost:5432"
+              },
+              "vse_config": {
+                "client_type": "qdrant",
+                "url": "http://localhost:6334",
+                "qdrant_config": {
+                  "vse_url": "http://localhost:6334",
+                  "similarity_metric": "euclid",
+                  "hnsw_config": {
+                    "full_scan_threshold": 10000,
+                    "max_indexing_threads": 0,
+                    "m": 16,
+                    "ef_construct": 100
+                  },
+                  "wal_config": {
+                    "wal_capacity_mb": 32,
+                    "wal_segments_ahead": 0
+                  },
+                  "optimizer_config": {
+                    "deleted_threshold": 0.2,
+                    "vacuum_min_vector_number": 1000,
+                    "default_segment_number": 0,
+                    "max_segment_size": null,
+                    "memmap_threshold": null,
+                    "indexing_threshold": 2000,
+                    "flush_interval_sec": 5,
+                    "max_optimization_threads": 1
+                  },
+                  "shard_number": 8,
+                  "on_disk_payload": false,
+                  "timeout": 10
+                },
+                "pgvector_config": null
+              },
+              "log_config": {
+                "level": "info",
+                "log_file": "/tmp/ac.log",
+                "sentry": null
+              },
+              "license_config": {
+                "online": null,
+                "offline": {
+                  "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+                }
+              },
+              "digital_twin_type": "streamer",
+              "physical_twin_type": "actuator",
+              "shape": 1,
+              "display_name": "Air Conditioner",
+              "module_id": "air_conditioner",
+              "duration_threshold": "1s",
+              "sync_rate": "1s",
+              "sync_once": false,
+              "broker_config": {
+                "url": "127.0.0.1:9092",
+                "subscribe": "ac_sub",
+                "publish": "ac_pub"
+              },
+              "ras_config": {
+                "upsert_from": "json",
+                "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/ac_ras.json"
+              },
+              "in_twins": [],
+              "out_twins": []
+            },
+            {
+              "db_config": {
+                "table": "aqi",
+                "uri": "postgres://postgres:postgrespw@localhost:5432"
+              },
+              "vse_config": {
+                "client_type": "qdrant",
+                "url": "http://localhost:6334",
+                "qdrant_config": {
+                  "vse_url": "http://localhost:6334",
+                  "similarity_metric": "euclid",
+                  "hnsw_config": {
+                    "full_scan_threshold": 10000,
+                    "max_indexing_threads": 0,
+                    "m": 16,
+                    "ef_construct": 100
+                  },
+                  "wal_config": {
+                    "wal_capacity_mb": 32,
+                    "wal_segments_ahead": 0
+                  },
+                  "optimizer_config": {
+                    "deleted_threshold": 0.2,
+                    "vacuum_min_vector_number": 1000,
+                    "default_segment_number": 0,
+                    "max_segment_size": null,
+                    "memmap_threshold": null,
+                    "indexing_threshold": 2000,
+                    "flush_interval_sec": 5,
+                    "max_optimization_threads": 1
+                  },
+                  "shard_number": 8,
+                  "on_disk_payload": false,
+                  "timeout": 10
+                },
+                "pgvector_config": null
+              },
+              "log_config": {
+                "level": "info",
+                "log_file": "/tmp/aqi.log",
+                "sentry": null
+              },
+              "license_config": {
+                "online": null,
+                "offline": {
+                  "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+                }
+              },
+              "digital_twin_type": "streamer",
+              "physical_twin_type": "sensor",
+              "shape": 1,
+              "display_name": "Air Quality Index",
+              "module_id": "air_quality_index",
+              "duration_threshold": "1s",
+              "sync_rate": "1s",
+              "sync_once": false,
+              "broker_config": {
+                "url": "127.0.0.1:9092",
+                "subscribe": "aqi_sub",
+                "publish": ""
+              },
+              "ras_config": {
+                "upsert_from": "json",
+                "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/aqi_ras.json"
+              },
+              "in_twins": [],
+              "out_twins": []
+            },
+            {
+              "db_config": {
+                "table": "purifier",
+                "uri": "postgres://postgres:postgrespw@localhost:5432"
+              },
+              "vse_config": {
+                "client_type": "qdrant",
+                "url": "http://localhost:6334",
+                "qdrant_config": {
+                  "vse_url": "http://localhost:6334",
+                  "similarity_metric": "euclid",
+                  "hnsw_config": {
+                    "full_scan_threshold": 10000,
+                    "max_indexing_threads": 0,
+                    "m": 16,
+                    "ef_construct": 100
+                  },
+                  "wal_config": {
+                    "wal_capacity_mb": 32,
+                    "wal_segments_ahead": 0
+                  },
+                  "optimizer_config": {
+                    "deleted_threshold": 0.2,
+                    "vacuum_min_vector_number": 1000,
+                    "default_segment_number": 0,
+                    "max_segment_size": null,
+                    "memmap_threshold": null,
+                    "indexing_threshold": 2000,
+                    "flush_interval_sec": 5,
+                    "max_optimization_threads": 1
+                  },
+                  "shard_number": 8,
+                  "on_disk_payload": false,
+                  "timeout": 10
+                },
+                "pgvector_config": null
+              },
+              "log_config": {
+                "level": "info",
+                "log_file": "/tmp/purifier.log",
+                "sentry": null
+              },
+              "license_config": {
+                "online": null,
+                "offline": {
+                  "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+                }
+              },
+              "digital_twin_type": "streamer",
+              "physical_twin_type": "actuator",
+              "shape": 1,
+              "display_name": "Purifier",
+              "module_id": "purifier",
+              "duration_threshold": "1s",
+              "sync_rate": "1s",
+              "sync_once": false,
+              "broker_config": {
+                "url": "127.0.0.1:9092",
+                "subscribe": "purifier_sub",
+                "publish": "purifier_pub"
+              },
+              "ras_config": {
+                "upsert_from": "json",
+                "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/purifier_ras.json"
+              },
+              "in_twins": [],
+              "out_twins": []
+            },
+            {
+              "db_config": {
+                "table": "temperature",
+                "uri": "postgres://postgres:postgrespw@localhost:5432"
+              },
+              "vse_config": {
+                "client_type": "qdrant",
+                "url": "http://localhost:6334",
+                "qdrant_config": {
+                  "vse_url": "http://localhost:6334",
+                  "similarity_metric": "euclid",
+                  "hnsw_config": {
+                    "full_scan_threshold": 10000,
+                    "max_indexing_threads": 0,
+                    "m": 16,
+                    "ef_construct": 100
+                  },
+                  "wal_config": {
+                    "wal_capacity_mb": 32,
+                    "wal_segments_ahead": 0
+                  },
+                  "optimizer_config": {
+                    "deleted_threshold": 0.2,
+                    "vacuum_min_vector_number": 1000,
+                    "default_segment_number": 0,
+                    "max_segment_size": null,
+                    "memmap_threshold": null,
+                    "indexing_threshold": 2000,
+                    "flush_interval_sec": 5,
+                    "max_optimization_threads": 1
+                  },
+                  "shard_number": 8,
+                  "on_disk_payload": false,
+                  "timeout": 10
+                },
+                "pgvector_config": null
+              },
+              "log_config": {
+                "level": "info",
+                "log_file": "/tmp/temperature.log",
+                "sentry": null
+              },
+              "license_config": {
+                "online": null,
+                "offline": {
+                  "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+                }
+              },
+              "digital_twin_type": "streamer",
+              "physical_twin_type": "sensor",
+              "shape": 1,
+              "display_name": "Temperature (Celsius)",
+              "module_id": "temperature",
+              "duration_threshold": "1s",
+              "sync_rate": "1s",
+              "sync_once": false,
+              "broker_config": {
+                "url": "127.0.0.1:9092",
+                "subscribe": "temperature_sub",
+                "publish": ""
+              },
+              "ras_config": {
+                "upsert_from": "json",
+                "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/temperature_ras.json"
+              },
+              "in_twins": [],
+              "out_twins": []
+            }
+          ],
+          "out_twins": []
+        }
+      ],
+      "db_config": {
+        "table": "core",
+        "uri": "postgres://postgres:postgrespw@localhost:5432"
+      },
+      "log_config": {
+        "level": "info",
+        "log_file": "/tmp/avenieca_corepp.log",
+        "sentry": null
+      },
+      "license_config": {
+        "online": null,
+        "offline": {
+          "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+        }
+      },
+      "name": "core",
+      "module_id": "core_pp",
+      "recall": 10,
+      "range": 10,
+      "sync_once": false,
+      "document_config": {
+        "display_name": "smart_building_docs",
+        "module_id": "smart_building_docs",
+        "create_n_embed": true,
+        "db_config": {
+          "table": "smart_building_docs",
+          "uri": "postgres://postgres:postgrespw@localhost:5432"
+        },
+        "vse_config": {
+          "client_type": "qdrant",
+          "url": "http://localhost:6334",
+          "qdrant_config": {
+            "vse_url": "http://localhost:6334",
+            "similarity_metric": "euclid",
+            "hnsw_config": {
+              "full_scan_threshold": 10000,
+              "max_indexing_threads": 0,
+              "m": 16,
+              "ef_construct": 100
+            },
+            "wal_config": {
+              "wal_capacity_mb": 32,
+              "wal_segments_ahead": 0
+            },
+            "optimizer_config": {
+              "deleted_threshold": 0.2,
+              "vacuum_min_vector_number": 1000,
+              "default_segment_number": 0,
+              "max_segment_size": null,
+              "memmap_threshold": null,
+              "indexing_threshold": 2000,
+              "flush_interval_sec": 5,
+              "max_optimization_threads": 1
+            },
+            "shard_number": 8,
+            "on_disk_payload": false,
+            "timeout": 10
+          },
+          "pgvector_config": null
+        },
+        "retrieval_config": {
+          "nearest_neighbours": false,
+          "llm_provider_config": {
+            "provider": "openai",
+            "api_url": "https://api.openai.com/v1/",
+            "api_key": "<OPENAI_API_KEY>",
+            "model": "gpt-3.5-turbo",
+            "max_tokens": 1000,
+            "temperature": 0,
+            "top_p": 0,
+            "n": 2
+          }
+        },
+        "embedding_config": {
+          "api": "openai",
+          "api_url": "https://api.openai.com/v1/",
+          "api_key": "<OPENAI_API_KEY>",
+          "model": "text-embedding-ada-002",
+          "embedding_size": 1536
+        },
+        "sync_once": false
+      },
+      "reasoning_config": null
+    },
+    "coreres_config": {
+      "pag": "aggregate001",
+      "sync_rate": "200ms",
+      "duration_threshold": "2s",
+      "twin_configs": [
+        {
+          "db_config": {
+            "table": "ac",
+            "uri": "postgres://postgres:postgrespw@localhost:5432"
+          },
+          "vse_config": {
+            "client_type": "qdrant",
+            "url": "http://localhost:6334",
+            "qdrant_config": {
+              "vse_url": "http://localhost:6334",
+              "similarity_metric": "euclid",
+              "hnsw_config": {
+                "full_scan_threshold": 10000,
+                "max_indexing_threads": 0,
+                "m": 16,
+                "ef_construct": 100
+              },
+              "wal_config": {
+                "wal_capacity_mb": 32,
+                "wal_segments_ahead": 0
+              },
+              "optimizer_config": {
+                "deleted_threshold": 0.2,
+                "vacuum_min_vector_number": 1000,
+                "default_segment_number": 0,
+                "max_segment_size": null,
+                "memmap_threshold": null,
+                "indexing_threshold": 2000,
+                "flush_interval_sec": 5,
+                "max_optimization_threads": 1
+              },
+              "shard_number": 8,
+              "on_disk_payload": false,
+              "timeout": 10
+            },
+            "pgvector_config": null
+          },
+          "log_config": {
+            "level": "info",
+            "log_file": "/tmp/ac.log",
+            "sentry": null
+          },
+          "license_config": {
+            "online": null,
+            "offline": {
+              "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+            }
+          },
+          "digital_twin_type": "streamer",
+          "physical_twin_type": "actuator",
+          "shape": 1,
+          "display_name": "Air Conditioner",
+          "module_id": "air_conditioner",
+          "duration_threshold": "1s",
+          "sync_rate": "1s",
+          "sync_once": false,
+          "broker_config": {
+            "url": "127.0.0.1:9092",
+            "subscribe": "ac_sub",
+            "publish": "ac_pub"
+          },
+          "ras_config": {
+            "upsert_from": "json",
+            "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/ac_ras.json"
+          },
+          "in_twins": [],
+          "out_twins": []
+        },
+        {
+          "db_config": {
+            "table": "aqi",
+            "uri": "postgres://postgres:postgrespw@localhost:5432"
+          },
+          "vse_config": {
+            "client_type": "qdrant",
+            "url": "http://localhost:6334",
+            "qdrant_config": {
+              "vse_url": "http://localhost:6334",
+              "similarity_metric": "euclid",
+              "hnsw_config": {
+                "full_scan_threshold": 10000,
+                "max_indexing_threads": 0,
+                "m": 16,
+                "ef_construct": 100
+              },
+              "wal_config": {
+                "wal_capacity_mb": 32,
+                "wal_segments_ahead": 0
+              },
+              "optimizer_config": {
+                "deleted_threshold": 0.2,
+                "vacuum_min_vector_number": 1000,
+                "default_segment_number": 0,
+                "max_segment_size": null,
+                "memmap_threshold": null,
+                "indexing_threshold": 2000,
+                "flush_interval_sec": 5,
+                "max_optimization_threads": 1
+              },
+              "shard_number": 8,
+              "on_disk_payload": false,
+              "timeout": 10
+            },
+            "pgvector_config": null
+          },
+          "log_config": {
+            "level": "info",
+            "log_file": "/tmp/aqi.log",
+            "sentry": null
+          },
+          "license_config": {
+            "online": null,
+            "offline": {
+              "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+            }
+          },
+          "digital_twin_type": "streamer",
+          "physical_twin_type": "sensor",
+          "shape": 1,
+          "display_name": "Air Quality Index",
+          "module_id": "air_quality_index",
+          "duration_threshold": "1s",
+          "sync_rate": "1s",
+          "sync_once": false,
+          "broker_config": {
+            "url": "127.0.0.1:9092",
+            "subscribe": "aqi_sub",
+            "publish": ""
+          },
+          "ras_config": {
+            "upsert_from": "json",
+            "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/aqi_ras.json"
+          },
+          "in_twins": [],
+          "out_twins": []
+        },
+        {
+          "db_config": {
+            "table": "purifier",
+            "uri": "postgres://postgres:postgrespw@localhost:5432"
+          },
+          "vse_config": {
+            "client_type": "qdrant",
+            "url": "http://localhost:6334",
+            "qdrant_config": {
+              "vse_url": "http://localhost:6334",
+              "similarity_metric": "euclid",
+              "hnsw_config": {
+                "full_scan_threshold": 10000,
+                "max_indexing_threads": 0,
+                "m": 16,
+                "ef_construct": 100
+              },
+              "wal_config": {
+                "wal_capacity_mb": 32,
+                "wal_segments_ahead": 0
+              },
+              "optimizer_config": {
+                "deleted_threshold": 0.2,
+                "vacuum_min_vector_number": 1000,
+                "default_segment_number": 0,
+                "max_segment_size": null,
+                "memmap_threshold": null,
+                "indexing_threshold": 2000,
+                "flush_interval_sec": 5,
+                "max_optimization_threads": 1
+              },
+              "shard_number": 8,
+              "on_disk_payload": false,
+              "timeout": 10
+            },
+            "pgvector_config": null
+          },
+          "log_config": {
+            "level": "info",
+            "log_file": "/tmp/purifier.log",
+            "sentry": null
+          },
+          "license_config": {
+            "online": null,
+            "offline": {
+              "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+            }
+          },
+          "digital_twin_type": "streamer",
+          "physical_twin_type": "actuator",
+          "shape": 1,
+          "display_name": "Purifier",
+          "module_id": "purifier",
+          "duration_threshold": "1s",
+          "sync_rate": "1s",
+          "sync_once": false,
+          "broker_config": {
+            "url": "127.0.0.1:9092",
+            "subscribe": "purifier_sub",
+            "publish": "purifier_pub"
+          },
+          "ras_config": {
+            "upsert_from": "json",
+            "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/purifier_ras.json"
+          },
+          "in_twins": [],
+          "out_twins": []
+        },
+        {
+          "db_config": {
+            "table": "temperature",
+            "uri": "postgres://postgres:postgrespw@localhost:5432"
+          },
+          "vse_config": {
+            "client_type": "qdrant",
+            "url": "http://localhost:6334",
+            "qdrant_config": {
+              "vse_url": "http://localhost:6334",
+              "similarity_metric": "euclid",
+              "hnsw_config": {
+                "full_scan_threshold": 10000,
+                "max_indexing_threads": 0,
+                "m": 16,
+                "ef_construct": 100
+              },
+              "wal_config": {
+                "wal_capacity_mb": 32,
+                "wal_segments_ahead": 0
+              },
+              "optimizer_config": {
+                "deleted_threshold": 0.2,
+                "vacuum_min_vector_number": 1000,
+                "default_segment_number": 0,
+                "max_segment_size": null,
+                "memmap_threshold": null,
+                "indexing_threshold": 2000,
+                "flush_interval_sec": 5,
+                "max_optimization_threads": 1
+              },
+              "shard_number": 8,
+              "on_disk_payload": false,
+              "timeout": 10
+            },
+            "pgvector_config": null
+          },
+          "log_config": {
+            "level": "info",
+            "log_file": "/tmp/temperature.log",
+            "sentry": null
+          },
+          "license_config": {
+            "online": null,
+            "offline": {
+              "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+            }
+          },
+          "digital_twin_type": "streamer",
+          "physical_twin_type": "sensor",
+          "shape": 1,
+          "display_name": "Temperature (Celsius)",
+          "module_id": "temperature",
+          "duration_threshold": "1s",
+          "sync_rate": "1s",
+          "sync_once": false,
+          "broker_config": {
+            "url": "127.0.0.1:9092",
+            "subscribe": "temperature_sub",
+            "publish": ""
+          },
+          "ras_config": {
+            "upsert_from": "json",
+            "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/temperature_ras.json"
+          },
+          "in_twins": [],
+          "out_twins": []
+        },
+        {
+          "db_config": {
+            "table": "pag",
+            "uri": "postgres://postgres:postgrespw@localhost:5432"
+          },
+          "vse_config": {
+            "client_type": "qdrant",
+            "url": "http://localhost:6334",
+            "qdrant_config": {
+              "vse_url": "http://localhost:6334",
+              "similarity_metric": "euclid",
+              "hnsw_config": {
+                "full_scan_threshold": 10000,
+                "max_indexing_threads": 0,
+                "m": 16,
+                "ef_construct": 100
+              },
+              "wal_config": {
+                "wal_capacity_mb": 32,
+                "wal_segments_ahead": 0
+              },
+              "optimizer_config": {
+                "deleted_threshold": 0.2,
+                "vacuum_min_vector_number": 1000,
+                "default_segment_number": 0,
+                "max_segment_size": null,
+                "memmap_threshold": null,
+                "indexing_threshold": 2000,
+                "flush_interval_sec": 5,
+                "max_optimization_threads": 1
+              },
+              "shard_number": 8,
+              "on_disk_payload": false,
+              "timeout": 10
+            },
+            "pgvector_config": null
+          },
+          "log_config": {
+            "level": "info",
+            "log_file": "/tmp/aggregate001.log",
+            "sentry": null
+          },
+          "license_config": {
+            "online": null,
+            "offline": {
+              "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+            }
+          },
+          "digital_twin_type": "reader",
+          "physical_twin_type": "",
+          "shape": 4,
+          "display_name": "PAG",
+          "module_id": "aggregate001",
+          "duration_threshold": "40s",
+          "sync_rate": "1s",
+          "sync_once": false,
+          "broker_config": {
+            "url": "127.0.0.1:9092",
+            "subscribe": "aggregate001",
+            "publish": ""
+          },
+          "ras_config": null,
+          "in_twins": [
+            {
+              "db_config": {
+                "table": "ac",
+                "uri": "postgres://postgres:postgrespw@localhost:5432"
+              },
+              "vse_config": {
+                "client_type": "qdrant",
+                "url": "http://localhost:6334",
+                "qdrant_config": {
+                  "vse_url": "http://localhost:6334",
+                  "similarity_metric": "euclid",
+                  "hnsw_config": {
+                    "full_scan_threshold": 10000,
+                    "max_indexing_threads": 0,
+                    "m": 16,
+                    "ef_construct": 100
+                  },
+                  "wal_config": {
+                    "wal_capacity_mb": 32,
+                    "wal_segments_ahead": 0
+                  },
+                  "optimizer_config": {
+                    "deleted_threshold": 0.2,
+                    "vacuum_min_vector_number": 1000,
+                    "default_segment_number": 0,
+                    "max_segment_size": null,
+                    "memmap_threshold": null,
+                    "indexing_threshold": 2000,
+                    "flush_interval_sec": 5,
+                    "max_optimization_threads": 1
+                  },
+                  "shard_number": 8,
+                  "on_disk_payload": false,
+                  "timeout": 10
+                },
+                "pgvector_config": null
+              },
+              "log_config": {
+                "level": "info",
+                "log_file": "/tmp/ac.log",
+                "sentry": null
+              },
+              "license_config": {
+                "online": null,
+                "offline": {
+                  "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+                }
+              },
+              "digital_twin_type": "streamer",
+              "physical_twin_type": "actuator",
+              "shape": 1,
+              "display_name": "Air Conditioner",
+              "module_id": "air_conditioner",
+              "duration_threshold": "1s",
+              "sync_rate": "1s",
+              "sync_once": false,
+              "broker_config": {
+                "url": "127.0.0.1:9092",
+                "subscribe": "ac_sub",
+                "publish": "ac_pub"
+              },
+              "ras_config": {
+                "upsert_from": "json",
+                "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/ac_ras.json"
+              },
+              "in_twins": [],
+              "out_twins": []
+            },
+            {
+              "db_config": {
+                "table": "aqi",
+                "uri": "postgres://postgres:postgrespw@localhost:5432"
+              },
+              "vse_config": {
+                "client_type": "qdrant",
+                "url": "http://localhost:6334",
+                "qdrant_config": {
+                  "vse_url": "http://localhost:6334",
+                  "similarity_metric": "euclid",
+                  "hnsw_config": {
+                    "full_scan_threshold": 10000,
+                    "max_indexing_threads": 0,
+                    "m": 16,
+                    "ef_construct": 100
+                  },
+                  "wal_config": {
+                    "wal_capacity_mb": 32,
+                    "wal_segments_ahead": 0
+                  },
+                  "optimizer_config": {
+                    "deleted_threshold": 0.2,
+                    "vacuum_min_vector_number": 1000,
+                    "default_segment_number": 0,
+                    "max_segment_size": null,
+                    "memmap_threshold": null,
+                    "indexing_threshold": 2000,
+                    "flush_interval_sec": 5,
+                    "max_optimization_threads": 1
+                  },
+                  "shard_number": 8,
+                  "on_disk_payload": false,
+                  "timeout": 10
+                },
+                "pgvector_config": null
+              },
+              "log_config": {
+                "level": "info",
+                "log_file": "/tmp/aqi.log",
+                "sentry": null
+              },
+              "license_config": {
+                "online": null,
+                "offline": {
+                  "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+                }
+              },
+              "digital_twin_type": "streamer",
+              "physical_twin_type": "sensor",
+              "shape": 1,
+              "display_name": "Air Quality Index",
+              "module_id": "air_quality_index",
+              "duration_threshold": "1s",
+              "sync_rate": "1s",
+              "sync_once": false,
+              "broker_config": {
+                "url": "127.0.0.1:9092",
+                "subscribe": "aqi_sub",
+                "publish": ""
+              },
+              "ras_config": {
+                "upsert_from": "json",
+                "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/aqi_ras.json"
+              },
+              "in_twins": [],
+              "out_twins": []
+            },
+            {
+              "db_config": {
+                "table": "purifier",
+                "uri": "postgres://postgres:postgrespw@localhost:5432"
+              },
+              "vse_config": {
+                "client_type": "qdrant",
+                "url": "http://localhost:6334",
+                "qdrant_config": {
+                  "vse_url": "http://localhost:6334",
+                  "similarity_metric": "euclid",
+                  "hnsw_config": {
+                    "full_scan_threshold": 10000,
+                    "max_indexing_threads": 0,
+                    "m": 16,
+                    "ef_construct": 100
+                  },
+                  "wal_config": {
+                    "wal_capacity_mb": 32,
+                    "wal_segments_ahead": 0
+                  },
+                  "optimizer_config": {
+                    "deleted_threshold": 0.2,
+                    "vacuum_min_vector_number": 1000,
+                    "default_segment_number": 0,
+                    "max_segment_size": null,
+                    "memmap_threshold": null,
+                    "indexing_threshold": 2000,
+                    "flush_interval_sec": 5,
+                    "max_optimization_threads": 1
+                  },
+                  "shard_number": 8,
+                  "on_disk_payload": false,
+                  "timeout": 10
+                },
+                "pgvector_config": null
+              },
+              "log_config": {
+                "level": "info",
+                "log_file": "/tmp/purifier.log",
+                "sentry": null
+              },
+              "license_config": {
+                "online": null,
+                "offline": {
+                  "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+                }
+              },
+              "digital_twin_type": "streamer",
+              "physical_twin_type": "actuator",
+              "shape": 1,
+              "display_name": "Purifier",
+              "module_id": "purifier",
+              "duration_threshold": "1s",
+              "sync_rate": "1s",
+              "sync_once": false,
+              "broker_config": {
+                "url": "127.0.0.1:9092",
+                "subscribe": "purifier_sub",
+                "publish": "purifier_pub"
+              },
+              "ras_config": {
+                "upsert_from": "json",
+                "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/purifier_ras.json"
+              },
+              "in_twins": [],
+              "out_twins": []
+            },
+            {
+              "db_config": {
+                "table": "temperature",
+                "uri": "postgres://postgres:postgrespw@localhost:5432"
+              },
+              "vse_config": {
+                "client_type": "qdrant",
+                "url": "http://localhost:6334",
+                "qdrant_config": {
+                  "vse_url": "http://localhost:6334",
+                  "similarity_metric": "euclid",
+                  "hnsw_config": {
+                    "full_scan_threshold": 10000,
+                    "max_indexing_threads": 0,
+                    "m": 16,
+                    "ef_construct": 100
+                  },
+                  "wal_config": {
+                    "wal_capacity_mb": 32,
+                    "wal_segments_ahead": 0
+                  },
+                  "optimizer_config": {
+                    "deleted_threshold": 0.2,
+                    "vacuum_min_vector_number": 1000,
+                    "default_segment_number": 0,
+                    "max_segment_size": null,
+                    "memmap_threshold": null,
+                    "indexing_threshold": 2000,
+                    "flush_interval_sec": 5,
+                    "max_optimization_threads": 1
+                  },
+                  "shard_number": 8,
+                  "on_disk_payload": false,
+                  "timeout": 10
+                },
+                "pgvector_config": null
+              },
+              "log_config": {
+                "level": "info",
+                "log_file": "/tmp/temperature.log",
+                "sentry": null
+              },
+              "license_config": {
+                "online": null,
+                "offline": {
+                  "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+                }
+              },
+              "digital_twin_type": "streamer",
+              "physical_twin_type": "sensor",
+              "shape": 1,
+              "display_name": "Temperature (Celsius)",
+              "module_id": "temperature",
+              "duration_threshold": "1s",
+              "sync_rate": "1s",
+              "sync_once": false,
+              "broker_config": {
+                "url": "127.0.0.1:9092",
+                "subscribe": "temperature_sub",
+                "publish": ""
+              },
+              "ras_config": {
+                "upsert_from": "json",
+                "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/temperature_ras.json"
+              },
+              "in_twins": [],
+              "out_twins": []
+            }
+          ],
+          "out_twins": []
+        }
+      ],
+      "db_config": {
+        "table": "core",
+        "uri": "postgres://postgres:postgrespw@localhost:5432"
+      },
+      "log_config": {
+        "level": "info",
+        "log_file": "/tmp/avenieca_core_respond.log",
+        "sentry": null
+      },
+      "license_config": {
+        "online": null,
+        "offline": {
+          "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+        }
+      },
+      "name": "core",
+      "module_id": "core_res",
+      "recall": 20,
+      "range": 20,
+      "sync_once": false,
+      "document_config": null,
+      "reasoning_config": null
+    },
+    "coreus_config": {
+      "pag": "aggregate001",
+      "sync_rate": "100ms",
+      "duration_threshold": "2s",
+      "twin_configs": [
+        {
+          "db_config": {
+            "table": "ac",
+            "uri": "postgres://postgres:postgrespw@localhost:5432"
+          },
+          "vse_config": {
+            "client_type": "qdrant",
+            "url": "http://localhost:6334",
+            "qdrant_config": {
+              "vse_url": "http://localhost:6334",
+              "similarity_metric": "euclid",
+              "hnsw_config": {
+                "full_scan_threshold": 10000,
+                "max_indexing_threads": 0,
+                "m": 16,
+                "ef_construct": 100
+              },
+              "wal_config": {
+                "wal_capacity_mb": 32,
+                "wal_segments_ahead": 0
+              },
+              "optimizer_config": {
+                "deleted_threshold": 0.2,
+                "vacuum_min_vector_number": 1000,
+                "default_segment_number": 0,
+                "max_segment_size": null,
+                "memmap_threshold": null,
+                "indexing_threshold": 2000,
+                "flush_interval_sec": 5,
+                "max_optimization_threads": 1
+              },
+              "shard_number": 8,
+              "on_disk_payload": false,
+              "timeout": 10
+            },
+            "pgvector_config": null
+          },
+          "log_config": {
+            "level": "info",
+            "log_file": "/tmp/ac.log",
+            "sentry": null
+          },
+          "license_config": {
+            "online": null,
+            "offline": {
+              "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+            }
+          },
+          "digital_twin_type": "streamer",
+          "physical_twin_type": "actuator",
+          "shape": 1,
+          "display_name": "Air Conditioner",
+          "module_id": "air_conditioner",
+          "duration_threshold": "1s",
+          "sync_rate": "1s",
+          "sync_once": false,
+          "broker_config": {
+            "url": "127.0.0.1:9092",
+            "subscribe": "ac_sub",
+            "publish": "ac_pub"
+          },
+          "ras_config": {
+            "upsert_from": "json",
+            "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/ac_ras.json"
+          },
+          "in_twins": [],
+          "out_twins": []
+        },
+        {
+          "db_config": {
+            "table": "aqi",
+            "uri": "postgres://postgres:postgrespw@localhost:5432"
+          },
+          "vse_config": {
+            "client_type": "qdrant",
+            "url": "http://localhost:6334",
+            "qdrant_config": {
+              "vse_url": "http://localhost:6334",
+              "similarity_metric": "euclid",
+              "hnsw_config": {
+                "full_scan_threshold": 10000,
+                "max_indexing_threads": 0,
+                "m": 16,
+                "ef_construct": 100
+              },
+              "wal_config": {
+                "wal_capacity_mb": 32,
+                "wal_segments_ahead": 0
+              },
+              "optimizer_config": {
+                "deleted_threshold": 0.2,
+                "vacuum_min_vector_number": 1000,
+                "default_segment_number": 0,
+                "max_segment_size": null,
+                "memmap_threshold": null,
+                "indexing_threshold": 2000,
+                "flush_interval_sec": 5,
+                "max_optimization_threads": 1
+              },
+              "shard_number": 8,
+              "on_disk_payload": false,
+              "timeout": 10
+            },
+            "pgvector_config": null
+          },
+          "log_config": {
+            "level": "info",
+            "log_file": "/tmp/aqi.log",
+            "sentry": null
+          },
+          "license_config": {
+            "online": null,
+            "offline": {
+              "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+            }
+          },
+          "digital_twin_type": "streamer",
+          "physical_twin_type": "sensor",
+          "shape": 1,
+          "display_name": "Air Quality Index",
+          "module_id": "air_quality_index",
+          "duration_threshold": "1s",
+          "sync_rate": "1s",
+          "sync_once": false,
+          "broker_config": {
+            "url": "127.0.0.1:9092",
+            "subscribe": "aqi_sub",
+            "publish": ""
+          },
+          "ras_config": {
+            "upsert_from": "json",
+            "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/aqi_ras.json"
+          },
+          "in_twins": [],
+          "out_twins": []
+        },
+        {
+          "db_config": {
+            "table": "purifier",
+            "uri": "postgres://postgres:postgrespw@localhost:5432"
+          },
+          "vse_config": {
+            "client_type": "qdrant",
+            "url": "http://localhost:6334",
+            "qdrant_config": {
+              "vse_url": "http://localhost:6334",
+              "similarity_metric": "euclid",
+              "hnsw_config": {
+                "full_scan_threshold": 10000,
+                "max_indexing_threads": 0,
+                "m": 16,
+                "ef_construct": 100
+              },
+              "wal_config": {
+                "wal_capacity_mb": 32,
+                "wal_segments_ahead": 0
+              },
+              "optimizer_config": {
+                "deleted_threshold": 0.2,
+                "vacuum_min_vector_number": 1000,
+                "default_segment_number": 0,
+                "max_segment_size": null,
+                "memmap_threshold": null,
+                "indexing_threshold": 2000,
+                "flush_interval_sec": 5,
+                "max_optimization_threads": 1
+              },
+              "shard_number": 8,
+              "on_disk_payload": false,
+              "timeout": 10
+            },
+            "pgvector_config": null
+          },
+          "log_config": {
+            "level": "info",
+            "log_file": "/tmp/purifier.log",
+            "sentry": null
+          },
+          "license_config": {
+            "online": null,
+            "offline": {
+              "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+            }
+          },
+          "digital_twin_type": "streamer",
+          "physical_twin_type": "actuator",
+          "shape": 1,
+          "display_name": "Purifier",
+          "module_id": "purifier",
+          "duration_threshold": "1s",
+          "sync_rate": "1s",
+          "sync_once": false,
+          "broker_config": {
+            "url": "127.0.0.1:9092",
+            "subscribe": "purifier_sub",
+            "publish": "purifier_pub"
+          },
+          "ras_config": {
+            "upsert_from": "json",
+            "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/purifier_ras.json"
+          },
+          "in_twins": [],
+          "out_twins": []
+        },
+        {
+          "db_config": {
+            "table": "temperature",
+            "uri": "postgres://postgres:postgrespw@localhost:5432"
+          },
+          "vse_config": {
+            "client_type": "qdrant",
+            "url": "http://localhost:6334",
+            "qdrant_config": {
+              "vse_url": "http://localhost:6334",
+              "similarity_metric": "euclid",
+              "hnsw_config": {
+                "full_scan_threshold": 10000,
+                "max_indexing_threads": 0,
+                "m": 16,
+                "ef_construct": 100
+              },
+              "wal_config": {
+                "wal_capacity_mb": 32,
+                "wal_segments_ahead": 0
+              },
+              "optimizer_config": {
+                "deleted_threshold": 0.2,
+                "vacuum_min_vector_number": 1000,
+                "default_segment_number": 0,
+                "max_segment_size": null,
+                "memmap_threshold": null,
+                "indexing_threshold": 2000,
+                "flush_interval_sec": 5,
+                "max_optimization_threads": 1
+              },
+              "shard_number": 8,
+              "on_disk_payload": false,
+              "timeout": 10
+            },
+            "pgvector_config": null
+          },
+          "log_config": {
+            "level": "info",
+            "log_file": "/tmp/temperature.log",
+            "sentry": null
+          },
+          "license_config": {
+            "online": null,
+            "offline": {
+              "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+            }
+          },
+          "digital_twin_type": "streamer",
+          "physical_twin_type": "sensor",
+          "shape": 1,
+          "display_name": "Temperature (Celsius)",
+          "module_id": "temperature",
+          "duration_threshold": "1s",
+          "sync_rate": "1s",
+          "sync_once": false,
+          "broker_config": {
+            "url": "127.0.0.1:9092",
+            "subscribe": "temperature_sub",
+            "publish": ""
+          },
+          "ras_config": {
+            "upsert_from": "json",
+            "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/temperature_ras.json"
+          },
+          "in_twins": [],
+          "out_twins": []
+        },
+        {
+          "db_config": {
+            "table": "pag",
+            "uri": "postgres://postgres:postgrespw@localhost:5432"
+          },
+          "vse_config": {
+            "client_type": "qdrant",
+            "url": "http://localhost:6334",
+            "qdrant_config": {
+              "vse_url": "http://localhost:6334",
+              "similarity_metric": "euclid",
+              "hnsw_config": {
+                "full_scan_threshold": 10000,
+                "max_indexing_threads": 0,
+                "m": 16,
+                "ef_construct": 100
+              },
+              "wal_config": {
+                "wal_capacity_mb": 32,
+                "wal_segments_ahead": 0
+              },
+              "optimizer_config": {
+                "deleted_threshold": 0.2,
+                "vacuum_min_vector_number": 1000,
+                "default_segment_number": 0,
+                "max_segment_size": null,
+                "memmap_threshold": null,
+                "indexing_threshold": 2000,
+                "flush_interval_sec": 5,
+                "max_optimization_threads": 1
+              },
+              "shard_number": 8,
+              "on_disk_payload": false,
+              "timeout": 10
+            },
+            "pgvector_config": null
+          },
+          "log_config": {
+            "level": "info",
+            "log_file": "/tmp/aggregate001.log",
+            "sentry": null
+          },
+          "license_config": {
+            "online": null,
+            "offline": {
+              "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+            }
+          },
+          "digital_twin_type": "reader",
+          "physical_twin_type": "",
+          "shape": 4,
+          "display_name": "PAG",
+          "module_id": "aggregate001",
+          "duration_threshold": "40s",
+          "sync_rate": "1s",
+          "sync_once": false,
+          "broker_config": {
+            "url": "127.0.0.1:9092",
+            "subscribe": "aggregate001",
+            "publish": ""
+          },
+          "ras_config": null,
+          "in_twins": [
+            {
+              "db_config": {
+                "table": "ac",
+                "uri": "postgres://postgres:postgrespw@localhost:5432"
+              },
+              "vse_config": {
+                "client_type": "qdrant",
+                "url": "http://localhost:6334",
+                "qdrant_config": {
+                  "vse_url": "http://localhost:6334",
+                  "similarity_metric": "euclid",
+                  "hnsw_config": {
+                    "full_scan_threshold": 10000,
+                    "max_indexing_threads": 0,
+                    "m": 16,
+                    "ef_construct": 100
+                  },
+                  "wal_config": {
+                    "wal_capacity_mb": 32,
+                    "wal_segments_ahead": 0
+                  },
+                  "optimizer_config": {
+                    "deleted_threshold": 0.2,
+                    "vacuum_min_vector_number": 1000,
+                    "default_segment_number": 0,
+                    "max_segment_size": null,
+                    "memmap_threshold": null,
+                    "indexing_threshold": 2000,
+                    "flush_interval_sec": 5,
+                    "max_optimization_threads": 1
+                  },
+                  "shard_number": 8,
+                  "on_disk_payload": false,
+                  "timeout": 10
+                },
+                "pgvector_config": null
+              },
+              "log_config": {
+                "level": "info",
+                "log_file": "/tmp/ac.log",
+                "sentry": null
+              },
+              "license_config": {
+                "online": null,
+                "offline": {
+                  "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+                }
+              },
+              "digital_twin_type": "streamer",
+              "physical_twin_type": "actuator",
+              "shape": 1,
+              "display_name": "Air Conditioner",
+              "module_id": "air_conditioner",
+              "duration_threshold": "1s",
+              "sync_rate": "1s",
+              "sync_once": false,
+              "broker_config": {
+                "url": "127.0.0.1:9092",
+                "subscribe": "ac_sub",
+                "publish": "ac_pub"
+              },
+              "ras_config": {
+                "upsert_from": "json",
+                "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/ac_ras.json"
+              },
+              "in_twins": [],
+              "out_twins": []
+            },
+            {
+              "db_config": {
+                "table": "aqi",
+                "uri": "postgres://postgres:postgrespw@localhost:5432"
+              },
+              "vse_config": {
+                "client_type": "qdrant",
+                "url": "http://localhost:6334",
+                "qdrant_config": {
+                  "vse_url": "http://localhost:6334",
+                  "similarity_metric": "euclid",
+                  "hnsw_config": {
+                    "full_scan_threshold": 10000,
+                    "max_indexing_threads": 0,
+                    "m": 16,
+                    "ef_construct": 100
+                  },
+                  "wal_config": {
+                    "wal_capacity_mb": 32,
+                    "wal_segments_ahead": 0
+                  },
+                  "optimizer_config": {
+                    "deleted_threshold": 0.2,
+                    "vacuum_min_vector_number": 1000,
+                    "default_segment_number": 0,
+                    "max_segment_size": null,
+                    "memmap_threshold": null,
+                    "indexing_threshold": 2000,
+                    "flush_interval_sec": 5,
+                    "max_optimization_threads": 1
+                  },
+                  "shard_number": 8,
+                  "on_disk_payload": false,
+                  "timeout": 10
+                },
+                "pgvector_config": null
+              },
+              "log_config": {
+                "level": "info",
+                "log_file": "/tmp/aqi.log",
+                "sentry": null
+              },
+              "license_config": {
+                "online": null,
+                "offline": {
+                  "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+                }
+              },
+              "digital_twin_type": "streamer",
+              "physical_twin_type": "sensor",
+              "shape": 1,
+              "display_name": "Air Quality Index",
+              "module_id": "air_quality_index",
+              "duration_threshold": "1s",
+              "sync_rate": "1s",
+              "sync_once": false,
+              "broker_config": {
+                "url": "127.0.0.1:9092",
+                "subscribe": "aqi_sub",
+                "publish": ""
+              },
+              "ras_config": {
+                "upsert_from": "json",
+                "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/aqi_ras.json"
+              },
+              "in_twins": [],
+              "out_twins": []
+            },
+            {
+              "db_config": {
+                "table": "purifier",
+                "uri": "postgres://postgres:postgrespw@localhost:5432"
+              },
+              "vse_config": {
+                "client_type": "qdrant",
+                "url": "http://localhost:6334",
+                "qdrant_config": {
+                  "vse_url": "http://localhost:6334",
+                  "similarity_metric": "euclid",
+                  "hnsw_config": {
+                    "full_scan_threshold": 10000,
+                    "max_indexing_threads": 0,
+                    "m": 16,
+                    "ef_construct": 100
+                  },
+                  "wal_config": {
+                    "wal_capacity_mb": 32,
+                    "wal_segments_ahead": 0
+                  },
+                  "optimizer_config": {
+                    "deleted_threshold": 0.2,
+                    "vacuum_min_vector_number": 1000,
+                    "default_segment_number": 0,
+                    "max_segment_size": null,
+                    "memmap_threshold": null,
+                    "indexing_threshold": 2000,
+                    "flush_interval_sec": 5,
+                    "max_optimization_threads": 1
+                  },
+                  "shard_number": 8,
+                  "on_disk_payload": false,
+                  "timeout": 10
+                },
+                "pgvector_config": null
+              },
+              "log_config": {
+                "level": "info",
+                "log_file": "/tmp/purifier.log",
+                "sentry": null
+              },
+              "license_config": {
+                "online": null,
+                "offline": {
+                  "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+                }
+              },
+              "digital_twin_type": "streamer",
+              "physical_twin_type": "actuator",
+              "shape": 1,
+              "display_name": "Purifier",
+              "module_id": "purifier",
+              "duration_threshold": "1s",
+              "sync_rate": "1s",
+              "sync_once": false,
+              "broker_config": {
+                "url": "127.0.0.1:9092",
+                "subscribe": "purifier_sub",
+                "publish": "purifier_pub"
+              },
+              "ras_config": {
+                "upsert_from": "json",
+                "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/purifier_ras.json"
+              },
+              "in_twins": [],
+              "out_twins": []
+            },
+            {
+              "db_config": {
+                "table": "temperature",
+                "uri": "postgres://postgres:postgrespw@localhost:5432"
+              },
+              "vse_config": {
+                "client_type": "qdrant",
+                "url": "http://localhost:6334",
+                "qdrant_config": {
+                  "vse_url": "http://localhost:6334",
+                  "similarity_metric": "euclid",
+                  "hnsw_config": {
+                    "full_scan_threshold": 10000,
+                    "max_indexing_threads": 0,
+                    "m": 16,
+                    "ef_construct": 100
+                  },
+                  "wal_config": {
+                    "wal_capacity_mb": 32,
+                    "wal_segments_ahead": 0
+                  },
+                  "optimizer_config": {
+                    "deleted_threshold": 0.2,
+                    "vacuum_min_vector_number": 1000,
+                    "default_segment_number": 0,
+                    "max_segment_size": null,
+                    "memmap_threshold": null,
+                    "indexing_threshold": 2000,
+                    "flush_interval_sec": 5,
+                    "max_optimization_threads": 1
+                  },
+                  "shard_number": 8,
+                  "on_disk_payload": false,
+                  "timeout": 10
+                },
+                "pgvector_config": null
+              },
+              "log_config": {
+                "level": "info",
+                "log_file": "/tmp/temperature.log",
+                "sentry": null
+              },
+              "license_config": {
+                "online": null,
+                "offline": {
+                  "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+                }
+              },
+              "digital_twin_type": "streamer",
+              "physical_twin_type": "sensor",
+              "shape": 1,
+              "display_name": "Temperature (Celsius)",
+              "module_id": "temperature",
+              "duration_threshold": "1s",
+              "sync_rate": "1s",
+              "sync_once": false,
+              "broker_config": {
+                "url": "127.0.0.1:9092",
+                "subscribe": "temperature_sub",
+                "publish": ""
+              },
+              "ras_config": {
+                "upsert_from": "json",
+                "file_path": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/configs/ras/temperature_ras.json"
+              },
+              "in_twins": [],
+              "out_twins": []
+            }
+          ],
+          "out_twins": []
+        }
+      ],
+      "db_config": {
+        "table": "core",
+        "uri": "postgres://postgres:postgrespw@localhost:5432"
+      },
+      "log_config": {
+        "level": "info",
+        "log_file": "/tmp/avenieca_core_us.log",
+        "sentry": null
+      },
+      "license_config": {
+        "online": null,
+        "offline": {
+          "license_file": "/Users/ogbanugot/Workspace/aveni/eca_demos/smart_iot/license.lic"
+        }
+      },
+      "name": "core",
+      "module_id": "core_us",
+      "recall": 20,
+      "range": 20,
+      "sync_once": false,
+      "document_config": null,
+      "reasoning_config": null
+    },
+    "document_config": null
+  }
+}

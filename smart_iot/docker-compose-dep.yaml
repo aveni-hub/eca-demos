@@ -1,12 +1,11 @@
-version: "3"
-
 services:
   aggregate:
-    image: ogbanugot/avenieca:0.3.0
+    image: avenieca/eca:0.6.0
     command: aggregate --config "/avenieca/aggregate.json"
     volumes:
       - "aggregate:/avenieca/storage"
       - "./configs/docker/aggregate.json:/avenieca/aggregate.json"
+      - "./license.lic:/avenieca/license.lic"
     networks:
       - ECACluster
     deploy:
@@ -17,11 +16,12 @@ services:
         window: 120s
 
   core_us:
-    image: ogbanugot/avenieca:0.3.0
+    image: avenieca/eca:0.6.0
     command: core-us --config "/avenieca/core_us.json"
     volumes:
       - "core_us:/avenieca/storage"
       - "./configs/docker/core_us.json:/avenieca/core_us.json"
+      - "./license.lic:/avenieca/license.lic"
     depends_on:
       - aggregate
     networks:
@@ -34,11 +34,12 @@ services:
         window: 120s
 
   core_pp:
-    image: ogbanugot/avenieca:0.3.0
+    image: avenieca/eca:0.6.0
     command: core-pp --config "/avenieca/core_pp.json"
     volumes:
       - "core_pp:/avenieca/storage"
       - "./configs/docker/core_pp.json:/avenieca/core_pp.json"
+      - "./license.lic:/avenieca/license.lic"
     depends_on:
       - aggregate
     networks:
@@ -51,11 +52,12 @@ services:
         window: 120s
 
   core_res:
-    image: ogbanugot/avenieca:0.3.0
+    image: avenieca/eca:0.6.0
     command: core-respond --config "/avenieca/core_res.json"
     volumes:
       - "core_res:/avenieca/storage"
       - "./configs/docker/core_res.json:/avenieca/core_res.json"
+      - "./license.lic:/avenieca/license.lic"
     depends_on:
       - core_pp
     networks:
@@ -68,11 +70,12 @@ services:
         window: 120s
 
   document:
-    image: ogbanugot/avenieca:0.3.0
+    image: avenieca/eca:0.6.0
     command: document create --config "/avenieca/document.json"
     volumes:
       - "document:/avenieca/storage"
       - "./configs/docker/document.json:/avenieca/document.json"
+      - "./license.lic:/avenieca/license.lic"
     depends_on:
       - core_pp
     networks:
@@ -85,11 +88,12 @@ services:
         window: 120s
 
   server:
-    image: ogbanugot/avenieca-server:0.3.0
+    image: avenieca/server:0.6.0
     command: --config "/avenieca/server.json"
     volumes:
       - "server:/avenieca/storage"
       - "./configs/docker/server.json:/avenieca/server.json"
+      - "./license.lic:/avenieca/license.lic"
     depends_on:
       - aggregate
     ports:
